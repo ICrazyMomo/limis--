@@ -1,0 +1,19 @@
+limis-artifacts-20261016.zip MANIFEST
+full_bytes=685910425
+full_sha256=ded5c56a08f6efadbff817cb49a9ac006f525a9ecad026a412ba95fd9eacbdd1
+part_count=8
+part_size_nominal=90m
+merge_command=cat limis-artifacts-20261016.zip.part-* > limis-artifacts-20261016.zip
+
+parts:
+94371840 limis-artifacts-20261016.zip.part-000
+94371840 limis-artifacts-20261016.zip.part-001
+94371840 limis-artifacts-20261016.zip.part-002
+94371840 limis-artifacts-20261016.zip.part-003
+94371840 limis-artifacts-20261016.zip.part-004
+94371840 limis-artifacts-20261016.zip.part-005
+94371840 limis-artifacts-20261016.zip.part-006
+25307545 limis-artifacts-20261016.zip.part-007
+
+parts_total_bytes=685910425
+bytes_match=yes

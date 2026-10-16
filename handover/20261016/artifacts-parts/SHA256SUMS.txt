@@ -1,0 +1,12 @@
+# limis-artifacts-20261016.zip SHA256SUMS
+# full package
+ded5c56a08f6efadbff817cb49a9ac006f525a9ecad026a412ba95fd9eacbdd1  limis-artifacts-20261016.zip
+# parts
+99aeb1657b26ceaa43e387d953f62e02d1564e4ce7e57d97a04df6a05c8b178b  limis-artifacts-20261016.zip.part-000
+c071feb1b4cb5f86266cba9458ec088e6a671e86cc5fbea3581ed3af3fa31591  limis-artifacts-20261016.zip.part-001
+c30f746c973fa24b7b7d2759d1ed5f7f718681d3026ce708cd7562ceed90555c  limis-artifacts-20261016.zip.part-002
+84d8e6e17d9a3c5ab6d46aad237d550a5c8fae0cd83864e23e1967e333d4e1a2  limis-artifacts-20261016.zip.part-003
+fd02538b6fbcf4d3a8859a687ea2452c49dc778920f97740bfb3d65bd2e65b3a  limis-artifacts-20261016.zip.part-004
+efc7b195f74a4666c43e5a3f2407745db1c3dde0c00c057a60526ef216682934  limis-artifacts-20261016.zip.part-005
+8db1135d63c55cc2ef4c581a68aabc4b73d0fe46f04c1b3b11fa2bfcec192c06  limis-artifacts-20261016.zip.part-006
+6997bab153a48b4d8adeb9987f1674601ed6edf1dbaacfe202e0739ae94065a8  limis-artifacts-20261016.zip.part-007
