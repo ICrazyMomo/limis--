@@ -1,0 +1,35 @@
+archive: limis-workspace-full-20261016.zip
+whole_bytes: 2165014924
+whole_sha256: 8235068b325ad27a23e1b6980de4d04da778cbc0c955f7327a3a0fee3072f236
+part_count: 23
+part_size_max_bytes: 94371840  # 90m
+part_prefix: limis-workspace-full-20261016.zip.part-
+merge_command: cat limis-workspace-full-20261016.zip.part-* > limis-workspace-full-20261016.zip
+
+parts:
+  limis-workspace-full-20261016.zip.part-000  94371840
+  limis-workspace-full-20261016.zip.part-001  94371840
+  limis-workspace-full-20261016.zip.part-002  94371840
+  limis-workspace-full-20261016.zip.part-003  94371840
+  limis-workspace-full-20261016.zip.part-004  94371840
+  limis-workspace-full-20261016.zip.part-005  94371840
+  limis-workspace-full-20261016.zip.part-006  94371840
+  limis-workspace-full-20261016.zip.part-007  94371840
+  limis-workspace-full-20261016.zip.part-008  94371840
+  limis-workspace-full-20261016.zip.part-009  94371840
+  limis-workspace-full-20261016.zip.part-010  94371840
+  limis-workspace-full-20261016.zip.part-011  94371840
+  limis-workspace-full-20261016.zip.part-012  94371840
+  limis-workspace-full-20261016.zip.part-013  94371840
+  limis-workspace-full-20261016.zip.part-014  94371840
+  limis-workspace-full-20261016.zip.part-015  94371840
+  limis-workspace-full-20261016.zip.part-016  94371840
+  limis-workspace-full-20261016.zip.part-017  94371840
+  limis-workspace-full-20261016.zip.part-018  94371840
+  limis-workspace-full-20261016.zip.part-019  94371840
+  limis-workspace-full-20261016.zip.part-020  94371840
+  limis-workspace-full-20261016.zip.part-021  94371840
+  limis-workspace-full-20261016.zip.part-022  88834444
+
+store_parts_sum_bytes: 2165014924
+match_whole: YES
