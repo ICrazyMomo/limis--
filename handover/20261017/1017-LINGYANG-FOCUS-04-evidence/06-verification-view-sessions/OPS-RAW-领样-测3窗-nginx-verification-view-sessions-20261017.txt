@@ -1,0 +1,64 @@
+# RAW lingyang-ce3-nginx inv=inv-8a0mfw08xh status=SUCCESS
+=== OPS_RO_LINGYANG_CE3_NGINX 2026-10-17 07:00:12 +0800 ===
+HOST=VM-0-2-ubuntu
+WINDOW_MAIN=2026-10-17 06:47-06:50 CST
+WINDOW_WIDE=2026-10-17 06:46-06:51 CST (+-1min)
+ID=71596dda-6927-41d1-8ec4-3eccb31a75ea
+FOCUS=verification view-sessions
+RO_ONLY=yes NO_REPLAY_POST=yes NO_WRITE=yes
+---LOG_META---
+-rw-r----- 1 www-data adm  1926925 Oct 17 06:59 /var/log/nginx/access.log
+-rw-r----- 1 www-data adm 11154603 Oct 17 00:00 /var/log/nginx/access.log.1
+---WINDOW_BOUNDS_WIDE---
+7137:34.215.96.239 - - [17/Oct/2026:06:46:00 +0800] "GET /tlyf/?_cb=1792190759802 HTTP/1.1" 200 1852 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+7138:34.215.96.239 - - [17/Oct/2026:06:46:00 +0800] "GET /tlyf/system/config/public HTTP/1.1" 200 1400 "[PRESIGN_URL_REDACTED]" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+...
+7478:54.201.40.3 - - [17/Oct/2026:06:51:32 +0800] "GET /tlyf/system/pool/taskList/181/sample-plan?limit=20 HTTP/1.1" 200 563 "[PRESIGN_URL_REDACTED]" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+7479:183.250.114.44 - - [17/Oct/2026:06:51:56 +0800] "GET /tlyf/api/mobile/v1/messages?after=0&limit=50 HTTP/1.1" 200 125 "-" "okhttp/4.12.0"
+WINDOW_WIDE_LINE_COUNT=343
+WINDOW_MAIN_LINE_COUNT=285
+=== A_VERIFICATION_MAIN ===
+7261:44.227.25.49 - - [17/Oct/2026:06:48:14 +0800] "GET /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/verification HTTP/1.1" 200 945 "[PRESIGN_URL_REDACTED]" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+VERIF_MAIN_ID=1
+VERIF_MAIN_ANY=1
+=== B_VIEW_SESSIONS_MAIN ===
+7263:44.227.25.49 - - [17/Oct/2026:06:48:15 +0800] "POST /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/view-sessions HTTP/1.1" 200 2133 "[PRESIGN_URL_REDACTED]" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+VIEWSESS_MAIN_ID=1
+VIEWSESS_MAIN_ANY=1
+=== C_ID_ALL_MAIN ===
+7261:44.227.25.49 - - [17/Oct/2026:06:48:14 +0800] "GET /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/verification HTTP/1.1" 200 945 "[PRESIGN_URL_REDACTED]" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+7263:44.227.25.49 - - [17/Oct/2026:06:48:15 +0800] "POST /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/view-sessions HTTP/1.1" 200 2133 "[PRESIGN_URL_REDACTED]" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+ID_MAIN_COUNT=2
+=== D_VERIFICATION_WIDE ===
+7261:44.227.25.49 - - [17/Oct/2026:06:48:14 +0800] "GET /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/verification HTTP/1.1" 200 945 "[PRESIGN_URL_REDACTED]" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+VERIF_WIDE_ID=1
+=== E_VIEW_SESSIONS_WIDE ===
+7263:44.227.25.49 - - [17/Oct/2026:06:48:15 +0800] "POST /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/view-sessions HTTP/1.1" 200 2133 "[PRESIGN_URL_REDACTED]" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+VIEWSESS_WIDE_ID=1
+VIEWSESS_WIDE_ANY=1
+=== F_ID_ALL_WIDE ===
+7261:44.227.25.49 - - [17/Oct/2026:06:48:14 +0800] "GET /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/verification HTTP/1.1" 200 945 "[PRESIGN_URL_REDACTED]" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+7263:44.227.25.49 - - [17/Oct/2026:06:48:15 +0800] "POST /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/view-sessions HTTP/1.1" 200 2133 "[PRESIGN_URL_REDACTED]" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+ID_WIDE_COUNT=2
+=== G_VERIF_OR_VIEWSESS_06xx_TODAY ===
+6674:127.0.0.1 - - [17/Oct/2026:06:00:32 +0800] "GET /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/verification HTTP/1.1" 200 149 "-" "curl/8.5.0"
+6677:127.0.0.1 - - [17/Oct/2026:06:01:04 +0800] "GET /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/verification HTTP/1.1" 200 149 "-" "curl/8.5.0"
+6688:54.189.162.162 - - [17/Oct/2026:06:05:30 +0800] "GET /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/verification HTTP/1.1" 200 945 "[PRESIGN_URL_REDACTED]" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+6878:54.201.40.3 - - [17/Oct/2026:06:29:22 +0800] "GET /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/verification HTTP/1.1" 200 945 "-" "curl/8.14.1"
+6890:100.21.173.32 - - [17/Oct/2026:06:29:52 +0800] "GET /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/verification HTTP/1.1" 200 945 "-" "curl/8.14.1"
+7261:44.227.25.49 - - [17/Oct/2026:06:48:14 +0800] "GET /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/verification HTTP/1.1" 200 945 "[PRESIGN_URL_REDACTED]" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+7263:44.227.25.49 - - [17/Oct/2026:06:48:15 +0800] "POST /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/view-sessions HTTP/1.1" 200 2133 "[PRESIGN_URL_REDACTED]" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+ID_06_VERIF_VIEW=7
+=== H_ANY_VERIF_VIEWSESS_06xx ===
+6674:127.0.0.1 - - [17/Oct/2026:06:00:32 +0800] "GET /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/verification HTTP/1.1" 200 149 "-" "curl/8.5.0"
+6675:127.0.0.1 - - [17/Oct/2026:06:00:32 +0800] "GET /tlyf/lab/withdrawals/a476db3f-a906-4ddf-8be9-c013c0990bfd/verification HTTP/1.1" 200 149 "-" "curl/8.5.0"
+6677:127.0.0.1 - - [17/Oct/2026:06:01:04 +0800] "GET /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/verification HTTP/1.1" 200 149 "-" "curl/8.5.0"
+6678:127.0.0.1 - - [17/Oct/2026:06:01:04 +0800] "GET /tlyf/lab/withdrawals/a476db3f-a906-4ddf-8be9-c013c0990bfd/verification HTTP/1.1" 200 149 "-" "curl/8.5.0"
+6688:54.189.162.162 - - [17/Oct/2026:06:05:30 +0800] "GET /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/verification HTTP/1.1" 200 945 "[PRESIGN_URL_REDACTED]" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+6878:54.201.40.3 - - [17/Oct/2026:06:29:22 +0800] "GET /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/verification HTTP/1.1" 200 945 "-" "curl/8.14.1"
+6879:100.21.173.32 - - [17/Oct/2026:06:29:22 +0800] "GET /tlyf/lab/withdrawals/a476db3f-a906-4ddf-8be9-c013c0990bfd/verification HTTP/1.1" 200 960 "-" "curl/8.14.1"
+6890:100.21.173.32 - - [17/Oct/2026:06:29:52 +0800] "GET /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/verification HTTP/1.1" 200 945 "-" "curl/8.14.1"
+7261:44.227.25.49 - - [17/Oct/2026:06:48:14 +0800] "GET /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/verification HTTP/1.1" 200 945 "[PRESIGN_URL_REDACTED]" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+7263:44.227.25.49 - - [17/Oct/2026:06:48:15 +0800] "POST /tlyf/lab/withdrawals/71596dda-6927-41d1-8ec4-3eccb31a75ea/view-sessions HTTP/1.1" 200 2133 "[PRESIGN_URL_REDACTED]" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+ANY_06_VERIF_VIEW=10
+DONE
