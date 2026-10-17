@@ -1,0 +1,6 @@
+branch=tip/genplan-entry-batch-source-on-9ab6a45a-20261017
+short_sha=2d8dd3d8
+full_sha=2d8dd3d86b10740660b9da89b4512598aaa98d81
+tag=tip/2d8dd3d8-on-9ab6a45a
+stack_final=9ab6a45a
+remote=local-only-not-pushed

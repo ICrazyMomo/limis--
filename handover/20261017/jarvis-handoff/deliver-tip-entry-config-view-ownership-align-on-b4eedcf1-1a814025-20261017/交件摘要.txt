@@ -1,0 +1,10 @@
+TIP_OK · entry-config view ownership align · on FINAL b4eedcf1 · 准修 1a814025
+dir=/workspace/artifacts/deliver-tip-entry-config-view-ownership-align-on-b4eedcf1-1a814025-20261017/
+PATCH_Impl=d05982909028486a
+ORIG_Impl=5b05565b4f7e0250 ≡ EXTRACT
+tgz_sha16=6ce21cad57d96c6a
+SELFTEST=PASS major=52
+EXTRACT_MANIFEST=c9ac2a618cbb5943 OPS=48307be6264500a1
+叠基=b4eedcf1
+禁自LIVE · 尚无放行章 · 甲FE 4fea5d72不动 · Receipt KEEP
+AFTER预期：Impl=d0598290 · inners/Receipt/Controller/I KEEP

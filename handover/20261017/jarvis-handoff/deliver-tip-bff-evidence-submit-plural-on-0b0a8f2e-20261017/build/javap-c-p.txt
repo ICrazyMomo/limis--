@@ -1,0 +1,1500 @@
+Compiled from "PointEvidenceController.java"
+public class com.lei.mobile.evidence.PointEvidenceController {
+  static final java.lang.String VERSION;
+
+  static final java.lang.String CORE_PACKAGE_CONTRACT;
+
+  static final java.lang.String TIP_MARKER;
+
+  private static final java.util.Set<java.lang.String> INPUT;
+
+  private static final java.util.Set<java.lang.String> CONTEXT;
+
+  private static final java.util.Set<java.lang.String> RECEIPT;
+
+  private static final java.util.Set<java.lang.String> LEGACY_RESULT;
+
+  private static final java.util.Set<java.lang.String> CORE_RECEIPT;
+
+  private final java.util.function.Function<java.lang.String, com.lei.mobile.auth.MobileSession> sessions;
+
+  private final org.springframework.web.client.RestTemplate rest;
+
+  private final java.lang.String base;
+
+  private final java.lang.String key;
+
+  private final com.fasterxml.jackson.databind.ObjectMapper json;
+
+  public com.lei.mobile.evidence.PointEvidenceController(com.lei.mobile.auth.MobileTokenService, org.springframework.web.client.RestTemplate, java.lang.String, java.lang.String, com.fasterxml.jackson.databind.ObjectMapper);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #1,  0              // InvokeDynamic #0:apply:(Lcom/lei/mobile/auth/MobileTokenService;)Ljava/util/function/Function;
+       7: aload_2
+       8: aload_3
+       9: aload         4
+      11: aload         5
+      13: invokespecial #2                  // Method "<init>":(Ljava/util/function/Function;Lorg/springframework/web/client/RestTemplate;Ljava/lang/String;Ljava/lang/String;Lcom/fasterxml/jackson/databind/ObjectMapper;)V
+      16: return
+
+  com.lei.mobile.evidence.PointEvidenceController(java.util.function.Function<java.lang.String, com.lei.mobile.auth.MobileSession>, org.springframework.web.client.RestTemplate, java.lang.String, java.lang.String, com.fasterxml.jackson.databind.ObjectMapper);
+    Code:
+       0: aload_0
+       1: invokespecial #3                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #4                  // Field sessions:Ljava/util/function/Function;
+       9: aload_0
+      10: aload_2
+      11: putfield      #5                  // Field rest:Lorg/springframework/web/client/RestTemplate;
+      14: aload_0
+      15: aload_3
+      16: ldc           #6                  // String /+$
+      18: ldc           #7                  // String
+      20: invokevirtual #8                  // Method java/lang/String.replaceAll:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      23: putfield      #9                  // Field base:Ljava/lang/String;
+      26: aload_0
+      27: aload         4
+      29: putfield      #10                 // Field key:Ljava/lang/String;
+      32: aload_0
+      33: aload         5
+      35: invokevirtual #11                 // Method com/fasterxml/jackson/databind/ObjectMapper.copy:()Lcom/fasterxml/jackson/databind/ObjectMapper;
+      38: iconst_1
+      39: anewarray     #12                 // class com/fasterxml/jackson/core/JsonParser$Feature
+      42: dup
+      43: iconst_0
+      44: getstatic     #13                 // Field com/fasterxml/jackson/core/JsonParser$Feature.STRICT_DUPLICATE_DETECTION:Lcom/fasterxml/jackson/core/JsonParser$Feature;
+      47: aastore
+      48: invokevirtual #14                 // Method com/fasterxml/jackson/databind/ObjectMapper.enable:([Lcom/fasterxml/jackson/core/JsonParser$Feature;)Lcom/fasterxml/jackson/databind/ObjectMapper;
+      51: getstatic     #15                 // Field com/fasterxml/jackson/databind/DeserializationFeature.FAIL_ON_TRAILING_TOKENS:Lcom/fasterxml/jackson/databind/DeserializationFeature;
+      54: invokevirtual #16                 // Method com/fasterxml/jackson/databind/ObjectMapper.enable:(Lcom/fasterxml/jackson/databind/DeserializationFeature;)Lcom/fasterxml/jackson/databind/ObjectMapper;
+      57: putfield      #17                 // Field json:Lcom/fasterxml/jackson/databind/ObjectMapper;
+      60: return
+
+  public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> context(long, long, java.lang.String, java.lang.String, java.lang.String);
+    Code:
+       0: aload_0
+       1: lload_1
+       2: lload_3
+       3: aload         5
+       5: aload         6
+       7: aload         7
+       9: ldc           #18                 // String context
+      11: aconst_null
+      12: aconst_null
+      13: invokespecial #19                 // Method exchange:(JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
+      16: areturn
+
+  public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> submit(long, long, java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>);
+    Code:
+       0: aload         8
+       2: aload         7
+       4: invokestatic  #20                 // Method validateInput:(Ljava/util/Map;Ljava/lang/String;)V
+       7: aload_0
+       8: lload_1
+       9: lload_3
+      10: aload         5
+      12: aload         6
+      14: aload         7
+      16: ldc           #21                 // String submit
+      18: aload         8
+      20: aconst_null
+      21: invokespecial #19                 // Method exchange:(JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
+      24: areturn
+
+  public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> result(long, long, java.lang.String, java.lang.String, java.lang.String, java.lang.String);
+    Code:
+       0: aload         5
+       2: invokestatic  #22                 // Method uuid:(Ljava/lang/String;)Z
+       5: ifne          19
+       8: sipush        400
+      11: ldc           #23                 // String POINT_EVIDENCE_REQUEST_INVALID
+      13: aload         8
+      15: invokestatic  #24                 // Method error:(ILjava/lang/String;Ljava/lang/String;)Lcom/lei/mobile/MobileContractException;
+      18: athrow
+      19: aload_0
+      20: lload_1
+      21: lload_3
+      22: aload         6
+      24: aload         7
+      26: aload         8
+      28: new           #25                 // class java/lang/StringBuilder
+      31: dup
+      32: invokespecial #26                 // Method java/lang/StringBuilder."<init>":()V
+      35: ldc           #27                 // String submissions/
+      37: invokevirtual #28                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      40: aload         5
+      42: invokevirtual #28                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      45: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      48: aconst_null
+      49: aload         5
+      51: invokespecial #19                 // Method exchange:(JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
+      54: areturn
+
+  private org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> exchange(long, long, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String);
+    Code:
+       0: ldc           #21                 // String submit
+       2: aload         8
+       4: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       7: istore        12
+       9: lload_1
+      10: lconst_0
+      11: lcmp
+      12: ifle          39
+      15: lload_3
+      16: lconst_0
+      17: lcmp
+      18: ifle          39
+      21: ldc           #32                 // String evidence-package-point-v2
+      23: aload         6
+      25: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      28: ifeq          39
+      31: aload         7
+      33: invokestatic  #22                 // Method uuid:(Ljava/lang/String;)Z
+      36: ifne          50
+      39: sipush        400
+      42: ldc           #23                 // String POINT_EVIDENCE_REQUEST_INVALID
+      44: aload         7
+      46: invokestatic  #24                 // Method error:(ILjava/lang/String;Ljava/lang/String;)Lcom/lei/mobile/MobileContractException;
+      49: athrow
+      50: aload_0
+      51: getfield      #4                  // Field sessions:Ljava/util/function/Function;
+      54: aload         5
+      56: invokeinterface #33,  2           // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+      61: checkcast     #34                 // class com/lei/mobile/auth/MobileSession
+      64: astore        11
+      66: goto          95
+      69: astore        13
+      71: sipush        403
+      74: ldc           #36                 // String POINT_EVIDENCE_FORBIDDEN
+      76: aload         7
+      78: invokestatic  #24                 // Method error:(ILjava/lang/String;Ljava/lang/String;)Lcom/lei/mobile/MobileContractException;
+      81: athrow
+      82: astore        13
+      84: sipush        401
+      87: ldc           #38                 // String SESSION_EXPIRED
+      89: aload         7
+      91: invokestatic  #24                 // Method error:(ILjava/lang/String;Ljava/lang/String;)Lcom/lei/mobile/MobileContractException;
+      94: athrow
+      95: aload         11
+      97: ifnull        121
+     100: aload         11
+     102: invokevirtual #39                 // Method com/lei/mobile/auth/MobileSession.getProfile:()Lcom/lei/mobile/auth/MobileProfile;
+     105: ifnull        121
+     108: aload         11
+     110: invokevirtual #39                 // Method com/lei/mobile/auth/MobileSession.getProfile:()Lcom/lei/mobile/auth/MobileProfile;
+     113: ldc           #40                 // String system:executeTask:execute
+     115: invokevirtual #41                 // Method com/lei/mobile/auth/MobileProfile.hasPermission:(Ljava/lang/String;)Z
+     118: ifne          132
+     121: sipush        403
+     124: ldc           #36                 // String POINT_EVIDENCE_FORBIDDEN
+     126: aload         7
+     128: invokestatic  #24                 // Method error:(ILjava/lang/String;Ljava/lang/String;)Lcom/lei/mobile/MobileContractException;
+     131: athrow
+     132: new           #42                 // class org/springframework/http/HttpHeaders
+     135: dup
+     136: invokespecial #43                 // Method org/springframework/http/HttpHeaders."<init>":()V
+     139: astore        13
+     141: aload         13
+     143: getstatic     #44                 // Field org/springframework/http/MediaType.APPLICATION_JSON:Lorg/springframework/http/MediaType;
+     146: invokevirtual #45                 // Method org/springframework/http/HttpHeaders.setContentType:(Lorg/springframework/http/MediaType;)V
+     149: aload         13
+     151: getstatic     #44                 // Field org/springframework/http/MediaType.APPLICATION_JSON:Lorg/springframework/http/MediaType;
+     154: invokestatic  #46                 // Method java/util/Collections.singletonList:(Ljava/lang/Object;)Ljava/util/List;
+     157: invokevirtual #47                 // Method org/springframework/http/HttpHeaders.setAccept:(Ljava/util/List;)V
+     160: aload         13
+     162: ldc           #48                 // String X-Mobile-Service-Key
+     164: aload_0
+     165: getfield      #10                 // Field key:Ljava/lang/String;
+     168: invokevirtual #49                 // Method org/springframework/http/HttpHeaders.set:(Ljava/lang/String;Ljava/lang/String;)V
+     171: aload         13
+     173: ldc           #50                 // String X-Trusted-User-Id
+     175: aload         11
+     177: invokevirtual #39                 // Method com/lei/mobile/auth/MobileSession.getProfile:()Lcom/lei/mobile/auth/MobileProfile;
+     180: invokevirtual #51                 // Method com/lei/mobile/auth/MobileProfile.getUserId:()J
+     183: invokestatic  #52                 // Method java/lang/String.valueOf:(J)Ljava/lang/String;
+     186: invokevirtual #49                 // Method org/springframework/http/HttpHeaders.set:(Ljava/lang/String;Ljava/lang/String;)V
+     189: aload         13
+     191: ldc           #53                 // String X-Trusted-Tenant-Id
+     193: aload         11
+     195: invokevirtual #39                 // Method com/lei/mobile/auth/MobileSession.getProfile:()Lcom/lei/mobile/auth/MobileProfile;
+     198: invokevirtual #54                 // Method com/lei/mobile/auth/MobileProfile.getTenantId:()Ljava/lang/String;
+     201: invokevirtual #49                 // Method org/springframework/http/HttpHeaders.set:(Ljava/lang/String;Ljava/lang/String;)V
+     204: aload         13
+     206: ldc           #55                 // String X-Trusted-Session-Id
+     208: aload         11
+     210: invokevirtual #56                 // Method com/lei/mobile/auth/MobileSession.getSessionId:()Ljava/lang/String;
+     213: invokevirtual #49                 // Method org/springframework/http/HttpHeaders.set:(Ljava/lang/String;Ljava/lang/String;)V
+     216: aload         13
+     218: ldc           #57                 // String X-Request-Id
+     220: aload         7
+     222: invokevirtual #49                 // Method org/springframework/http/HttpHeaders.set:(Ljava/lang/String;Ljava/lang/String;)V
+     225: iload         12
+     227: ifeq          657
+     230: aload         13
+     232: ldc           #58                 // String X-Mobile-Internal-Contract-Version
+     234: ldc           #59                 // String evidence-package-v1
+     236: invokevirtual #49                 // Method org/springframework/http/HttpHeaders.set:(Ljava/lang/String;Ljava/lang/String;)V
+     239: aload         13
+     241: ldc           #60                 // String Idempotency-Key
+     243: aload         7
+     245: invokevirtual #49                 // Method org/springframework/http/HttpHeaders.set:(Ljava/lang/String;Ljava/lang/String;)V
+     248: ldc           #61                 // String expectedVersion
+     250: iconst_0
+     251: invokestatic  #62                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     254: invokestatic  #63                 // Method java/util/Collections.singletonMap:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+     257: astore        14
+     259: aload_0
+     260: getfield      #5                  // Field rest:Lorg/springframework/web/client/RestTemplate;
+     263: new           #25                 // class java/lang/StringBuilder
+     266: dup
+     267: invokespecial #26                 // Method java/lang/StringBuilder."<init>":()V
+     270: aload_0
+     271: getfield      #9                  // Field base:Ljava/lang/String;
+     274: invokevirtual #28                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     277: ldc           #64                 // String /internal/mobile/v1/task-lists/
+     279: invokevirtual #28                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     282: lload_1
+     283: invokevirtual #65                 // Method java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+     286: ldc           #66                 // String /evidence-packages/submit
+     288: invokevirtual #28                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     291: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     294: invokestatic  #67                 // Method java/net/URI.create:(Ljava/lang/String;)Ljava/net/URI;
+     297: getstatic     #68                 // Field org/springframework/http/HttpMethod.POST:Lorg/springframework/http/HttpMethod;
+     300: new           #69                 // class org/springframework/http/HttpEntity
+     303: dup
+     304: aload         14
+     306: aload         13
+     308: invokespecial #70                 // Method org/springframework/http/HttpEntity."<init>":(Ljava/lang/Object;Lorg/springframework/util/MultiValueMap;)V
+     311: ldc           #71                 // class java/lang/String
+     313: invokevirtual #72                 // Method org/springframework/web/client/RestTemplate.exchange:(Ljava/net/URI;Lorg/springframework/http/HttpMethod;Lorg/springframework/http/HttpEntity;Ljava/lang/Class;)Lorg/springframework/http/ResponseEntity;
+     316: astore        15
+     318: aload         15
+     320: invokevirtual #73                 // Method org/springframework/http/ResponseEntity.getStatusCode:()Lorg/springframework/http/HttpStatus;
+     323: getstatic     #74                 // Field org/springframework/http/HttpStatus.OK:Lorg/springframework/http/HttpStatus;
+     326: if_acmpne     412
+     329: ldc           #59                 // String evidence-package-v1
+     331: aload         15
+     333: invokevirtual #75                 // Method org/springframework/http/ResponseEntity.getHeaders:()Lorg/springframework/http/HttpHeaders;
+     336: ldc           #58                 // String X-Mobile-Internal-Contract-Version
+     338: invokevirtual #76                 // Method org/springframework/http/HttpHeaders.getFirst:(Ljava/lang/String;)Ljava/lang/String;
+     341: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     344: ifeq          412
+     347: aload         7
+     349: aload         15
+     351: invokevirtual #75                 // Method org/springframework/http/ResponseEntity.getHeaders:()Lorg/springframework/http/HttpHeaders;
+     354: ldc           #57                 // String X-Request-Id
+     356: invokevirtual #76                 // Method org/springframework/http/HttpHeaders.getFirst:(Ljava/lang/String;)Ljava/lang/String;
+     359: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     362: ifeq          412
+     365: aload         15
+     367: invokevirtual #75                 // Method org/springframework/http/ResponseEntity.getHeaders:()Lorg/springframework/http/HttpHeaders;
+     370: invokevirtual #77                 // Method org/springframework/http/HttpHeaders.getCacheControl:()Ljava/lang/String;
+     373: invokestatic  #78                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     376: ldc           #79                 // String no-store
+     378: invokevirtual #80                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     381: ifeq          412
+     384: aload         15
+     386: invokevirtual #75                 // Method org/springframework/http/ResponseEntity.getHeaders:()Lorg/springframework/http/HttpHeaders;
+     389: invokevirtual #81                 // Method org/springframework/http/HttpHeaders.getContentType:()Lorg/springframework/http/MediaType;
+     392: ifnull        412
+     395: getstatic     #44                 // Field org/springframework/http/MediaType.APPLICATION_JSON:Lorg/springframework/http/MediaType;
+     398: aload         15
+     400: invokevirtual #75                 // Method org/springframework/http/ResponseEntity.getHeaders:()Lorg/springframework/http/HttpHeaders;
+     403: invokevirtual #81                 // Method org/springframework/http/HttpHeaders.getContentType:()Lorg/springframework/http/MediaType;
+     406: invokevirtual #82                 // Method org/springframework/http/MediaType.isCompatibleWith:(Lorg/springframework/http/MediaType;)Z
+     409: ifne          420
+     412: new           #83                 // class java/lang/IllegalArgumentException
+     415: dup
+     416: invokespecial #84                 // Method java/lang/IllegalArgumentException."<init>":()V
+     419: athrow
+     420: aload_0
+     421: getfield      #17                 // Field json:Lcom/fasterxml/jackson/databind/ObjectMapper;
+     424: aload         15
+     426: invokevirtual #85                 // Method org/springframework/http/ResponseEntity.getBody:()Ljava/lang/Object;
+     429: checkcast     #71                 // class java/lang/String
+     432: ldc           #86                 // class java/util/Map
+     434: invokevirtual #87                 // Method com/fasterxml/jackson/databind/ObjectMapper.readValue:(Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;
+     437: checkcast     #86                 // class java/util/Map
+     440: astore        16
+     442: aload         16
+     444: lload_1
+     445: lload_3
+     446: aload         7
+     448: aload         9
+     450: invokestatic  #88                 // Method adaptCoreSubmitReceipt:(Ljava/util/Map;JJLjava/lang/String;Ljava/util/Map;)Ljava/util/Map;
+     453: astore        17
+     455: invokestatic  #89                 // Method org/springframework/http/ResponseEntity.ok:()Lorg/springframework/http/ResponseEntity$BodyBuilder;
+     458: getstatic     #44                 // Field org/springframework/http/MediaType.APPLICATION_JSON:Lorg/springframework/http/MediaType;
+     461: invokeinterface #90,  2           // InterfaceMethod org/springframework/http/ResponseEntity$BodyBuilder.contentType:(Lorg/springframework/http/MediaType;)Lorg/springframework/http/ResponseEntity$BodyBuilder;
+     466: invokestatic  #91                 // Method org/springframework/http/CacheControl.noStore:()Lorg/springframework/http/CacheControl;
+     469: invokeinterface #92,  2           // InterfaceMethod org/springframework/http/ResponseEntity$BodyBuilder.cacheControl:(Lorg/springframework/http/CacheControl;)Lorg/springframework/http/ResponseEntity$HeadersBuilder;
+     474: checkcast     #93                 // class org/springframework/http/ResponseEntity$BodyBuilder
+     477: ldc           #94                 // String X-Mobile-Contract-Version
+     479: iconst_1
+     480: anewarray     #71                 // class java/lang/String
+     483: dup
+     484: iconst_0
+     485: ldc           #32                 // String evidence-package-point-v2
+     487: aastore
+     488: invokeinterface #95,  3           // InterfaceMethod org/springframework/http/ResponseEntity$BodyBuilder.header:(Ljava/lang/String;[Ljava/lang/String;)Lorg/springframework/http/ResponseEntity$HeadersBuilder;
+     493: checkcast     #93                 // class org/springframework/http/ResponseEntity$BodyBuilder
+     496: ldc           #57                 // String X-Request-Id
+     498: iconst_1
+     499: anewarray     #71                 // class java/lang/String
+     502: dup
+     503: iconst_0
+     504: aload         7
+     506: aastore
+     507: invokeinterface #95,  3           // InterfaceMethod org/springframework/http/ResponseEntity$BodyBuilder.header:(Ljava/lang/String;[Ljava/lang/String;)Lorg/springframework/http/ResponseEntity$HeadersBuilder;
+     512: checkcast     #93                 // class org/springframework/http/ResponseEntity$BodyBuilder
+     515: aload         17
+     517: invokeinterface #96,  2           // InterfaceMethod org/springframework/http/ResponseEntity$BodyBuilder.body:(Ljava/lang/Object;)Lorg/springframework/http/ResponseEntity;
+     522: areturn
+     523: astore        15
+     525: aload         15
+     527: athrow
+     528: astore        15
+     530: aload         15
+     532: invokevirtual #99                 // Method org/springframework/web/client/HttpStatusCodeException.getRawStatusCode:()I
+     535: istore        16
+     537: iconst_4
+     538: anewarray     #100                // class java/lang/Integer
+     541: dup
+     542: iconst_0
+     543: sipush        400
+     546: invokestatic  #62                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     549: aastore
+     550: dup
+     551: iconst_1
+     552: sipush        401
+     555: invokestatic  #62                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     558: aastore
+     559: dup
+     560: iconst_2
+     561: sipush        403
+     564: invokestatic  #62                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     567: aastore
+     568: dup
+     569: iconst_3
+     570: sipush        409
+     573: invokestatic  #62                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     576: aastore
+     577: invokestatic  #101                // Method java/util/Arrays.asList:([Ljava/lang/Object;)Ljava/util/List;
+     580: iload         16
+     582: invokestatic  #62                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     585: invokeinterface #102,  2          // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+     590: ifeq          633
+     593: iload         16
+     595: sipush        403
+     598: if_icmpne     606
+     601: ldc           #36                 // String POINT_EVIDENCE_FORBIDDEN
+     603: goto          621
+     606: iload         16
+     608: sipush        400
+     611: if_icmpne     619
+     614: ldc           #23                 // String POINT_EVIDENCE_REQUEST_INVALID
+     616: goto          621
+     619: ldc           #103                // String POINT_EVIDENCE_CONTEXT_CONFLICT
+     621: astore        17
+     623: iload         16
+     625: aload         17
+     627: aload         7
+     629: invokestatic  #24                 // Method error:(ILjava/lang/String;Ljava/lang/String;)Lcom/lei/mobile/MobileContractException;
+     632: athrow
+     633: sipush        503
+     636: ldc           #104                // String POINT_EVIDENCE_RESULT_UNKNOWN
+     638: aload         7
+     640: invokestatic  #24                 // Method error:(ILjava/lang/String;Ljava/lang/String;)Lcom/lei/mobile/MobileContractException;
+     643: athrow
+     644: astore        15
+     646: sipush        503
+     649: ldc           #104                // String POINT_EVIDENCE_RESULT_UNKNOWN
+     651: aload         7
+     653: invokestatic  #24                 // Method error:(ILjava/lang/String;Ljava/lang/String;)Lcom/lei/mobile/MobileContractException;
+     656: athrow
+     657: aload         13
+     659: ldc           #58                 // String X-Mobile-Internal-Contract-Version
+     661: ldc           #32                 // String evidence-package-point-v2
+     663: invokevirtual #49                 // Method org/springframework/http/HttpHeaders.set:(Ljava/lang/String;Ljava/lang/String;)V
+     666: aload_0
+     667: getfield      #5                  // Field rest:Lorg/springframework/web/client/RestTemplate;
+     670: new           #25                 // class java/lang/StringBuilder
+     673: dup
+     674: invokespecial #26                 // Method java/lang/StringBuilder."<init>":()V
+     677: aload_0
+     678: getfield      #9                  // Field base:Ljava/lang/String;
+     681: invokevirtual #28                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     684: ldc           #64                 // String /internal/mobile/v1/task-lists/
+     686: invokevirtual #28                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     689: lload_1
+     690: invokevirtual #65                 // Method java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+     693: ldc           #106                // String /points/
+     695: invokevirtual #28                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     698: lload_3
+     699: invokevirtual #65                 // Method java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+     702: ldc           #107                // String /evidence-package/
+     704: invokevirtual #28                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     707: aload         8
+     709: invokevirtual #28                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     712: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     715: invokestatic  #67                 // Method java/net/URI.create:(Ljava/lang/String;)Ljava/net/URI;
+     718: getstatic     #108                // Field org/springframework/http/HttpMethod.GET:Lorg/springframework/http/HttpMethod;
+     721: new           #69                 // class org/springframework/http/HttpEntity
+     724: dup
+     725: aload         9
+     727: aload         13
+     729: invokespecial #70                 // Method org/springframework/http/HttpEntity."<init>":(Ljava/lang/Object;Lorg/springframework/util/MultiValueMap;)V
+     732: ldc           #71                 // class java/lang/String
+     734: invokevirtual #72                 // Method org/springframework/web/client/RestTemplate.exchange:(Ljava/net/URI;Lorg/springframework/http/HttpMethod;Lorg/springframework/http/HttpEntity;Ljava/lang/Class;)Lorg/springframework/http/ResponseEntity;
+     737: astore        14
+     739: aload         14
+     741: invokevirtual #73                 // Method org/springframework/http/ResponseEntity.getStatusCode:()Lorg/springframework/http/HttpStatus;
+     744: getstatic     #74                 // Field org/springframework/http/HttpStatus.OK:Lorg/springframework/http/HttpStatus;
+     747: if_acmpne     833
+     750: ldc           #32                 // String evidence-package-point-v2
+     752: aload         14
+     754: invokevirtual #75                 // Method org/springframework/http/ResponseEntity.getHeaders:()Lorg/springframework/http/HttpHeaders;
+     757: ldc           #58                 // String X-Mobile-Internal-Contract-Version
+     759: invokevirtual #76                 // Method org/springframework/http/HttpHeaders.getFirst:(Ljava/lang/String;)Ljava/lang/String;
+     762: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     765: ifeq          833
+     768: aload         7
+     770: aload         14
+     772: invokevirtual #75                 // Method org/springframework/http/ResponseEntity.getHeaders:()Lorg/springframework/http/HttpHeaders;
+     775: ldc           #57                 // String X-Request-Id
+     777: invokevirtual #76                 // Method org/springframework/http/HttpHeaders.getFirst:(Ljava/lang/String;)Ljava/lang/String;
+     780: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     783: ifeq          833
+     786: aload         14
+     788: invokevirtual #75                 // Method org/springframework/http/ResponseEntity.getHeaders:()Lorg/springframework/http/HttpHeaders;
+     791: invokevirtual #77                 // Method org/springframework/http/HttpHeaders.getCacheControl:()Ljava/lang/String;
+     794: invokestatic  #78                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     797: ldc           #79                 // String no-store
+     799: invokevirtual #80                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     802: ifeq          833
+     805: aload         14
+     807: invokevirtual #75                 // Method org/springframework/http/ResponseEntity.getHeaders:()Lorg/springframework/http/HttpHeaders;
+     810: invokevirtual #81                 // Method org/springframework/http/HttpHeaders.getContentType:()Lorg/springframework/http/MediaType;
+     813: ifnull        833
+     816: getstatic     #44                 // Field org/springframework/http/MediaType.APPLICATION_JSON:Lorg/springframework/http/MediaType;
+     819: aload         14
+     821: invokevirtual #75                 // Method org/springframework/http/ResponseEntity.getHeaders:()Lorg/springframework/http/HttpHeaders;
+     824: invokevirtual #81                 // Method org/springframework/http/HttpHeaders.getContentType:()Lorg/springframework/http/MediaType;
+     827: invokevirtual #82                 // Method org/springframework/http/MediaType.isCompatibleWith:(Lorg/springframework/http/MediaType;)Z
+     830: ifne          841
+     833: new           #83                 // class java/lang/IllegalArgumentException
+     836: dup
+     837: invokespecial #84                 // Method java/lang/IllegalArgumentException."<init>":()V
+     840: athrow
+     841: aload_0
+     842: getfield      #17                 // Field json:Lcom/fasterxml/jackson/databind/ObjectMapper;
+     845: aload         14
+     847: invokevirtual #85                 // Method org/springframework/http/ResponseEntity.getBody:()Ljava/lang/Object;
+     850: checkcast     #71                 // class java/lang/String
+     853: ldc           #86                 // class java/util/Map
+     855: invokevirtual #87                 // Method com/fasterxml/jackson/databind/ObjectMapper.readValue:(Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;
+     858: checkcast     #86                 // class java/util/Map
+     861: astore        15
+     863: aload         10
+     865: ifnull        883
+     868: aload_0
+     869: aload         15
+     871: lload_1
+     872: lload_3
+     873: aload         10
+     875: invokespecial #109                // Method adaptResult:(Ljava/util/Map;JJLjava/lang/String;)Ljava/util/Map;
+     878: astore        15
+     880: goto          1106
+     883: aload         15
+     885: invokeinterface #110,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+     890: getstatic     #111                // Field CONTEXT:Ljava/util/Set;
+     893: invokeinterface #112,  2          // InterfaceMethod java/util/Set.equals:(Ljava/lang/Object;)Z
+     898: invokestatic  #113                // Method require:(Z)V
+     901: aload         15
+     903: lload_1
+     904: lload_3
+     905: invokestatic  #114                // Method identity:(Ljava/util/Map;JJ)V
+     908: getstatic     #115                // Field INPUT:Ljava/util/Set;
+     911: invokeinterface #116,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     916: astore        16
+     918: aload         16
+     920: invokeinterface #117,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     925: ifeq          999
+     928: aload         16
+     930: invokeinterface #118,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     935: checkcast     #71                 // class java/lang/String
+     938: astore        17
+     940: ldc           #119                // String snapshotDigest
+     942: aload         17
+     944: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     947: ifeq          953
+     950: goto          918
+     953: ldc           #61                 // String expectedVersion
+     955: aload         17
+     957: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     960: ifeq          967
+     963: lconst_0
+     964: goto          968
+     967: lconst_1
+     968: lstore        18
+     970: aload         15
+     972: aload         17
+     974: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     979: invokestatic  #121                // Method number:(Ljava/lang/Object;)J
+     982: lload         18
+     984: lcmp
+     985: iflt          992
+     988: iconst_1
+     989: goto          993
+     992: iconst_0
+     993: invokestatic  #113                // Method require:(Z)V
+     996: goto          918
+     999: aload         15
+    1001: ldc           #119                // String snapshotDigest
+    1003: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+    1008: invokestatic  #122                // Method hash:(Ljava/lang/Object;)Z
+    1011: ifeq          1052
+    1014: iconst_2
+    1015: anewarray     #71                 // class java/lang/String
+    1018: dup
+    1019: iconst_0
+    1020: ldc           #123                // String NOT_SUBMITTED
+    1022: aastore
+    1023: dup
+    1024: iconst_1
+    1025: ldc           #124                // String SUBMITTED
+    1027: aastore
+    1028: invokestatic  #101                // Method java/util/Arrays.asList:([Ljava/lang/Object;)Ljava/util/List;
+    1031: aload         15
+    1033: ldc           #125                // String state
+    1035: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+    1040: invokeinterface #102,  2          // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+    1045: ifeq          1052
+    1048: iconst_1
+    1049: goto          1053
+    1052: iconst_0
+    1053: invokestatic  #113                // Method require:(Z)V
+    1056: ldc           #123                // String NOT_SUBMITTED
+    1058: aload         15
+    1060: ldc           #125                // String state
+    1062: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+    1067: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+    1070: ifeq          1077
+    1073: lconst_0
+    1074: goto          1078
+    1077: lconst_1
+    1078: lstore        16
+    1080: aload         15
+    1082: ldc           #61                 // String expectedVersion
+    1084: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+    1089: invokestatic  #121                // Method number:(Ljava/lang/Object;)J
+    1092: lload         16
+    1094: lcmp
+    1095: ifne          1102
+    1098: iconst_1
+    1099: goto          1103
+    1102: iconst_0
+    1103: invokestatic  #113                // Method require:(Z)V
+    1106: invokestatic  #89                 // Method org/springframework/http/ResponseEntity.ok:()Lorg/springframework/http/ResponseEntity$BodyBuilder;
+    1109: getstatic     #44                 // Field org/springframework/http/MediaType.APPLICATION_JSON:Lorg/springframework/http/MediaType;
+    1112: invokeinterface #90,  2           // InterfaceMethod org/springframework/http/ResponseEntity$BodyBuilder.contentType:(Lorg/springframework/http/MediaType;)Lorg/springframework/http/ResponseEntity$BodyBuilder;
+    1117: invokestatic  #91                 // Method org/springframework/http/CacheControl.noStore:()Lorg/springframework/http/CacheControl;
+    1120: invokeinterface #92,  2           // InterfaceMethod org/springframework/http/ResponseEntity$BodyBuilder.cacheControl:(Lorg/springframework/http/CacheControl;)Lorg/springframework/http/ResponseEntity$HeadersBuilder;
+    1125: checkcast     #93                 // class org/springframework/http/ResponseEntity$BodyBuilder
+    1128: ldc           #94                 // String X-Mobile-Contract-Version
+    1130: iconst_1
+    1131: anewarray     #71                 // class java/lang/String
+    1134: dup
+    1135: iconst_0
+    1136: ldc           #32                 // String evidence-package-point-v2
+    1138: aastore
+    1139: invokeinterface #95,  3           // InterfaceMethod org/springframework/http/ResponseEntity$BodyBuilder.header:(Ljava/lang/String;[Ljava/lang/String;)Lorg/springframework/http/ResponseEntity$HeadersBuilder;
+    1144: checkcast     #93                 // class org/springframework/http/ResponseEntity$BodyBuilder
+    1147: ldc           #57                 // String X-Request-Id
+    1149: iconst_1
+    1150: anewarray     #71                 // class java/lang/String
+    1153: dup
+    1154: iconst_0
+    1155: aload         7
+    1157: aastore
+    1158: invokeinterface #95,  3           // InterfaceMethod org/springframework/http/ResponseEntity$BodyBuilder.header:(Ljava/lang/String;[Ljava/lang/String;)Lorg/springframework/http/ResponseEntity$HeadersBuilder;
+    1163: checkcast     #93                 // class org/springframework/http/ResponseEntity$BodyBuilder
+    1166: aload         15
+    1168: invokeinterface #96,  2           // InterfaceMethod org/springframework/http/ResponseEntity$BodyBuilder.body:(Ljava/lang/Object;)Lorg/springframework/http/ResponseEntity;
+    1173: areturn
+    1174: astore        14
+    1176: aload         14
+    1178: athrow
+    1179: astore        14
+    1181: aload         14
+    1183: invokevirtual #99                 // Method org/springframework/web/client/HttpStatusCodeException.getRawStatusCode:()I
+    1186: istore        15
+    1188: aload         10
+    1190: ifnull        1219
+    1193: iload         15
+    1195: sipush        404
+    1198: if_icmpne     1219
+    1201: aload_0
+    1202: aload         14
+    1204: invokespecial #126                // Method submissionNotFound:(Lorg/springframework/web/client/HttpStatusCodeException;)Z
+    1207: ifeq          1219
+    1210: aload_0
+    1211: aload         10
+    1213: aload         7
+    1215: invokespecial #127                // Method notFound:(Ljava/lang/String;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
+    1218: areturn
+    1219: iconst_4
+    1220: anewarray     #100                // class java/lang/Integer
+    1223: dup
+    1224: iconst_0
+    1225: sipush        400
+    1228: invokestatic  #62                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+    1231: aastore
+    1232: dup
+    1233: iconst_1
+    1234: sipush        401
+    1237: invokestatic  #62                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+    1240: aastore
+    1241: dup
+    1242: iconst_2
+    1243: sipush        403
+    1246: invokestatic  #62                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+    1249: aastore
+    1250: dup
+    1251: iconst_3
+    1252: sipush        409
+    1255: invokestatic  #62                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+    1258: aastore
+    1259: invokestatic  #101                // Method java/util/Arrays.asList:([Ljava/lang/Object;)Ljava/util/List;
+    1262: iload         15
+    1264: invokestatic  #62                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+    1267: invokeinterface #102,  2          // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+    1272: ifeq          1315
+    1275: iload         15
+    1277: sipush        403
+    1280: if_icmpne     1288
+    1283: ldc           #36                 // String POINT_EVIDENCE_FORBIDDEN
+    1285: goto          1303
+    1288: iload         15
+    1290: sipush        400
+    1293: if_icmpne     1301
+    1296: ldc           #23                 // String POINT_EVIDENCE_REQUEST_INVALID
+    1298: goto          1303
+    1301: ldc           #103                // String POINT_EVIDENCE_CONTEXT_CONFLICT
+    1303: astore        16
+    1305: iload         15
+    1307: aload         16
+    1309: aload         7
+    1311: invokestatic  #24                 // Method error:(ILjava/lang/String;Ljava/lang/String;)Lcom/lei/mobile/MobileContractException;
+    1314: athrow
+    1315: sipush        503
+    1318: ldc           #128                // String POINT_EVIDENCE_UNAVAILABLE
+    1320: aload         7
+    1322: invokestatic  #24                 // Method error:(ILjava/lang/String;Ljava/lang/String;)Lcom/lei/mobile/MobileContractException;
+    1325: athrow
+    1326: astore        14
+    1328: sipush        503
+    1331: ldc           #128                // String POINT_EVIDENCE_UNAVAILABLE
+    1333: aload         7
+    1335: invokestatic  #24                 // Method error:(ILjava/lang/String;Ljava/lang/String;)Lcom/lei/mobile/MobileContractException;
+    1338: athrow
+    Exception table:
+       from    to  target type
+          50    66    69   Class com/lei/mobile/auth/MobileTokenService$MobileAccessDeniedException
+          50    66    82   Class com/lei/mobile/auth/MobileTokenService$UnauthorizedException
+         259   522   523   Class com/lei/mobile/MobileContractException
+         259   522   528   Class org/springframework/web/client/HttpStatusCodeException
+         259   522   644   Class java/lang/Exception
+         666  1173  1174   Class com/lei/mobile/MobileContractException
+         666  1173  1179   Class org/springframework/web/client/HttpStatusCodeException
+         666  1173  1326   Class java/lang/Exception
+
+  private static java.util.Map<java.lang.String, java.lang.Object> adaptCoreSubmitReceipt(java.util.Map<java.lang.String, java.lang.Object>, long, long, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>);
+    Code:
+       0: aload_0
+       1: ifnull        25
+       4: aload_0
+       5: invokeinterface #110,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+      10: getstatic     #129                // Field CORE_RECEIPT:Ljava/util/Set;
+      13: invokeinterface #112,  2          // InterfaceMethod java/util/Set.equals:(Ljava/lang/Object;)Z
+      18: ifeq          25
+      21: iconst_1
+      22: goto          26
+      25: iconst_0
+      26: invokestatic  #113                // Method require:(Z)V
+      29: ldc           #124                // String SUBMITTED
+      31: aload_0
+      32: ldc           #130                // String outcome
+      34: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      39: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      42: ifeq          65
+      45: ldc           #124                // String SUBMITTED
+      47: aload_0
+      48: ldc           #131                // String status
+      50: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      55: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      58: ifeq          65
+      61: iconst_1
+      62: goto          66
+      65: iconst_0
+      66: invokestatic  #113                // Method require:(Z)V
+      69: aload_0
+      70: ldc           #132                // String taskListId
+      72: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      77: invokestatic  #121                // Method number:(Ljava/lang/Object;)J
+      80: lload_1
+      81: lcmp
+      82: ifne          89
+      85: iconst_1
+      86: goto          90
+      89: iconst_0
+      90: invokestatic  #113                // Method require:(Z)V
+      93: aload_0
+      94: ldc           #133                // String samplingPointId
+      96: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     101: invokestatic  #121                // Method number:(Ljava/lang/Object;)J
+     104: lload_3
+     105: lcmp
+     106: ifne          113
+     109: iconst_1
+     110: goto          114
+     113: iconst_0
+     114: invokestatic  #113                // Method require:(Z)V
+     117: aload_0
+     118: ldc           #134                // String version
+     120: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     125: invokestatic  #121                // Method number:(Ljava/lang/Object;)J
+     128: lconst_1
+     129: lcmp
+     130: ifne          153
+     133: aload_0
+     134: ldc           #135                // String receiptCount
+     136: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     141: invokestatic  #121                // Method number:(Ljava/lang/Object;)J
+     144: lconst_0
+     145: lcmp
+     146: ifle          153
+     149: iconst_1
+     150: goto          154
+     153: iconst_0
+     154: invokestatic  #113                // Method require:(Z)V
+     157: aload_0
+     158: ldc           #136                // String packageDigest
+     160: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     165: invokestatic  #122                // Method hash:(Ljava/lang/Object;)Z
+     168: invokestatic  #113                // Method require:(Z)V
+     171: aload_0
+     172: ldc           #137                // String submittedAt
+     174: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     179: checkcast     #71                 // class java/lang/String
+     182: invokestatic  #138                // Method java/time/Instant.parse:(Ljava/lang/CharSequence;)Ljava/time/Instant;
+     185: astore        7
+     187: aload         7
+     189: invokevirtual #139                // Method java/time/Instant.getNano:()I
+     192: ifne          218
+     195: aload         7
+     197: invokevirtual #140                // Method java/time/Instant.toString:()Ljava/lang/String;
+     200: aload_0
+     201: ldc           #137                // String submittedAt
+     203: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     208: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     211: ifeq          218
+     214: iconst_1
+     215: goto          219
+     218: iconst_0
+     219: invokestatic  #113                // Method require:(Z)V
+     222: new           #141                // class java/util/LinkedHashMap
+     225: dup
+     226: invokespecial #142                // Method java/util/LinkedHashMap."<init>":()V
+     229: astore        8
+     231: aload         8
+     233: ldc           #130                // String outcome
+     235: ldc           #143                // String POINT_SUBMITTED
+     237: invokevirtual #144                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     240: pop
+     241: aload         8
+     243: ldc           #132                // String taskListId
+     245: lload_1
+     246: invokestatic  #145                // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+     249: invokevirtual #144                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     252: pop
+     253: aload         8
+     255: ldc           #133                // String samplingPointId
+     257: lload_3
+     258: invokestatic  #145                // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+     261: invokevirtual #144                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     264: pop
+     265: aload         8
+     267: ldc           #146                // String planId
+     269: aload         6
+     271: ldc           #146                // String planId
+     273: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     278: invokevirtual #144                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     281: pop
+     282: aload         8
+     284: ldc           #147                // String planVersion
+     286: aload         6
+     288: ldc           #147                // String planVersion
+     290: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     295: invokevirtual #144                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     298: pop
+     299: aload         8
+     301: ldc           #134                // String version
+     303: aload_0
+     304: ldc           #134                // String version
+     306: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     311: invokevirtual #144                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     314: pop
+     315: aload         8
+     317: ldc           #135                // String receiptCount
+     319: aload_0
+     320: ldc           #135                // String receiptCount
+     322: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     327: invokevirtual #144                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     330: pop
+     331: aload         8
+     333: ldc           #137                // String submittedAt
+     335: aload_0
+     336: ldc           #137                // String submittedAt
+     338: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     343: invokevirtual #144                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     346: pop
+     347: aload         8
+     349: ldc           #136                // String packageDigest
+     351: aload_0
+     352: ldc           #136                // String packageDigest
+     354: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     359: invokevirtual #144                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     362: pop
+     363: aload         8
+     365: ldc           #148                // String requestId
+     367: aload         5
+     369: invokevirtual #144                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     372: pop
+     373: aload         8
+     375: lload_1
+     376: lload_3
+     377: aload         5
+     379: invokestatic  #149                // Method receipt:(Ljava/util/Map;JJLjava/lang/String;)V
+     382: aload         8
+     384: ldc           #146                // String planId
+     386: invokevirtual #150                // Method java/util/LinkedHashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     389: invokestatic  #121                // Method number:(Ljava/lang/Object;)J
+     392: aload         6
+     394: ldc           #146                // String planId
+     396: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     401: invokestatic  #121                // Method number:(Ljava/lang/Object;)J
+     404: lcmp
+     405: ifne          438
+     408: aload         8
+     410: ldc           #147                // String planVersion
+     412: invokevirtual #150                // Method java/util/LinkedHashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     415: invokestatic  #121                // Method number:(Ljava/lang/Object;)J
+     418: aload         6
+     420: ldc           #147                // String planVersion
+     422: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     427: invokestatic  #121                // Method number:(Ljava/lang/Object;)J
+     430: lcmp
+     431: ifne          438
+     434: iconst_1
+     435: goto          439
+     438: iconst_0
+     439: invokestatic  #113                // Method require:(Z)V
+     442: aload         8
+     444: areturn
+
+  private java.util.Map<java.lang.String, java.lang.Object> adaptResult(java.util.Map<java.lang.String, java.lang.Object>, long, long, java.lang.String);
+    Code:
+       0: aload_1
+       1: invokeinterface #110,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+       6: getstatic     #151                // Field LEGACY_RESULT:Ljava/util/Set;
+       9: invokeinterface #112,  2          // InterfaceMethod java/util/Set.equals:(Ljava/lang/Object;)Z
+      14: ifeq          126
+      17: aload         6
+      19: aload_1
+      20: ldc           #148                // String requestId
+      22: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      27: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      30: invokestatic  #113                // Method require:(Z)V
+      33: ldc           #152                // String APPLIED
+      35: aload_1
+      36: ldc           #125                // String state
+      38: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      43: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      46: ifeq          89
+      49: aload_1
+      50: ldc           #153                // String receipt
+      52: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      57: instanceof    #86                 // class java/util/Map
+      60: invokestatic  #113                // Method require:(Z)V
+      63: aload_1
+      64: ldc           #153                // String receipt
+      66: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      71: checkcast     #86                 // class java/util/Map
+      74: astore        7
+      76: aload         7
+      78: lload_2
+      79: lload         4
+      81: aload         6
+      83: invokestatic  #149                // Method receipt:(Ljava/util/Map;JJLjava/lang/String;)V
+      86: goto          124
+      89: ldc           #154                // String NOT_FOUND
+      91: aload_1
+      92: ldc           #125                // String state
+      94: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      99: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     102: ifeq          120
+     105: aload_1
+     106: ldc           #153                // String receipt
+     108: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     113: ifnonnull     120
+     116: iconst_1
+     117: goto          121
+     120: iconst_0
+     121: invokestatic  #113                // Method require:(Z)V
+     124: aload_1
+     125: areturn
+     126: aload_1
+     127: lload_2
+     128: lload         4
+     130: aload         6
+     132: invokestatic  #149                // Method receipt:(Ljava/util/Map;JJLjava/lang/String;)V
+     135: new           #141                // class java/util/LinkedHashMap
+     138: dup
+     139: invokespecial #142                // Method java/util/LinkedHashMap."<init>":()V
+     142: astore        7
+     144: aload         7
+     146: ldc           #125                // String state
+     148: ldc           #152                // String APPLIED
+     150: invokevirtual #144                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     153: pop
+     154: aload         7
+     156: ldc           #148                // String requestId
+     158: aload         6
+     160: invokevirtual #144                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     163: pop
+     164: aload         7
+     166: ldc           #153                // String receipt
+     168: aload_1
+     169: invokevirtual #144                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     172: pop
+     173: aload         7
+     175: areturn
+
+  private org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> notFound(java.lang.String, java.lang.String);
+    Code:
+       0: new           #141                // class java/util/LinkedHashMap
+       3: dup
+       4: invokespecial #142                // Method java/util/LinkedHashMap."<init>":()V
+       7: astore_3
+       8: aload_3
+       9: ldc           #125                // String state
+      11: ldc           #154                // String NOT_FOUND
+      13: invokevirtual #144                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      16: pop
+      17: aload_3
+      18: ldc           #148                // String requestId
+      20: aload_1
+      21: invokevirtual #144                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      24: pop
+      25: aload_3
+      26: ldc           #153                // String receipt
+      28: aconst_null
+      29: invokevirtual #144                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      32: pop
+      33: invokestatic  #89                 // Method org/springframework/http/ResponseEntity.ok:()Lorg/springframework/http/ResponseEntity$BodyBuilder;
+      36: getstatic     #44                 // Field org/springframework/http/MediaType.APPLICATION_JSON:Lorg/springframework/http/MediaType;
+      39: invokeinterface #90,  2           // InterfaceMethod org/springframework/http/ResponseEntity$BodyBuilder.contentType:(Lorg/springframework/http/MediaType;)Lorg/springframework/http/ResponseEntity$BodyBuilder;
+      44: invokestatic  #91                 // Method org/springframework/http/CacheControl.noStore:()Lorg/springframework/http/CacheControl;
+      47: invokeinterface #92,  2           // InterfaceMethod org/springframework/http/ResponseEntity$BodyBuilder.cacheControl:(Lorg/springframework/http/CacheControl;)Lorg/springframework/http/ResponseEntity$HeadersBuilder;
+      52: checkcast     #93                 // class org/springframework/http/ResponseEntity$BodyBuilder
+      55: ldc           #94                 // String X-Mobile-Contract-Version
+      57: iconst_1
+      58: anewarray     #71                 // class java/lang/String
+      61: dup
+      62: iconst_0
+      63: ldc           #32                 // String evidence-package-point-v2
+      65: aastore
+      66: invokeinterface #95,  3           // InterfaceMethod org/springframework/http/ResponseEntity$BodyBuilder.header:(Ljava/lang/String;[Ljava/lang/String;)Lorg/springframework/http/ResponseEntity$HeadersBuilder;
+      71: checkcast     #93                 // class org/springframework/http/ResponseEntity$BodyBuilder
+      74: ldc           #57                 // String X-Request-Id
+      76: iconst_1
+      77: anewarray     #71                 // class java/lang/String
+      80: dup
+      81: iconst_0
+      82: aload_2
+      83: aastore
+      84: invokeinterface #95,  3           // InterfaceMethod org/springframework/http/ResponseEntity$BodyBuilder.header:(Ljava/lang/String;[Ljava/lang/String;)Lorg/springframework/http/ResponseEntity$HeadersBuilder;
+      89: checkcast     #93                 // class org/springframework/http/ResponseEntity$BodyBuilder
+      92: aload_3
+      93: invokeinterface #96,  2           // InterfaceMethod org/springframework/http/ResponseEntity$BodyBuilder.body:(Ljava/lang/Object;)Lorg/springframework/http/ResponseEntity;
+      98: areturn
+
+  private boolean submissionNotFound(org.springframework.web.client.HttpStatusCodeException);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field json:Lcom/fasterxml/jackson/databind/ObjectMapper;
+       4: aload_1
+       5: invokevirtual #155                // Method org/springframework/web/client/HttpStatusCodeException.getResponseBodyAsString:()Ljava/lang/String;
+       8: ldc           #86                 // class java/util/Map
+      10: invokevirtual #87                 // Method com/fasterxml/jackson/databind/ObjectMapper.readValue:(Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;
+      13: checkcast     #86                 // class java/util/Map
+      16: astore_2
+      17: ldc           #156                // String POINT_EVIDENCE_SUBMISSION_NOT_FOUND
+      19: aload_2
+      20: ldc           #157                // String code
+      22: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      27: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      30: ireturn
+      31: astore_2
+      32: iconst_0
+      33: ireturn
+    Exception table:
+       from    to  target type
+           0    30    31   Class java/lang/Exception
+
+  private static void receipt(java.util.Map<java.lang.String, java.lang.Object>, long, long, java.lang.String);
+    Code:
+       0: aload_0
+       1: invokeinterface #110,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+       6: getstatic     #158                // Field RECEIPT:Ljava/util/Set;
+       9: invokeinterface #112,  2          // InterfaceMethod java/util/Set.equals:(Ljava/lang/Object;)Z
+      14: invokestatic  #113                // Method require:(Z)V
+      17: aload_0
+      18: lload_1
+      19: lload_3
+      20: invokestatic  #114                // Method identity:(Ljava/util/Map;JJ)V
+      23: ldc           #143                // String POINT_SUBMITTED
+      25: aload_0
+      26: ldc           #130                // String outcome
+      28: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      33: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      36: ifeq          137
+      39: aload         5
+      41: aload_0
+      42: ldc           #148                // String requestId
+      44: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      49: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      52: ifeq          137
+      55: aload_0
+      56: ldc           #134                // String version
+      58: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      63: invokestatic  #121                // Method number:(Ljava/lang/Object;)J
+      66: lconst_1
+      67: lcmp
+      68: ifne          137
+      71: aload_0
+      72: ldc           #135                // String receiptCount
+      74: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      79: invokestatic  #121                // Method number:(Ljava/lang/Object;)J
+      82: lconst_0
+      83: lcmp
+      84: ifle          137
+      87: aload_0
+      88: ldc           #146                // String planId
+      90: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      95: invokestatic  #121                // Method number:(Ljava/lang/Object;)J
+      98: lconst_0
+      99: lcmp
+     100: ifle          137
+     103: aload_0
+     104: ldc           #147                // String planVersion
+     106: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     111: invokestatic  #121                // Method number:(Ljava/lang/Object;)J
+     114: lconst_0
+     115: lcmp
+     116: ifle          137
+     119: aload_0
+     120: ldc           #136                // String packageDigest
+     122: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     127: invokestatic  #122                // Method hash:(Ljava/lang/Object;)Z
+     130: ifeq          137
+     133: iconst_1
+     134: goto          138
+     137: iconst_0
+     138: invokestatic  #113                // Method require:(Z)V
+     141: aload_0
+     142: ldc           #137                // String submittedAt
+     144: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     149: checkcast     #71                 // class java/lang/String
+     152: invokestatic  #138                // Method java/time/Instant.parse:(Ljava/lang/CharSequence;)Ljava/time/Instant;
+     155: astore        6
+     157: aload         6
+     159: invokevirtual #139                // Method java/time/Instant.getNano:()I
+     162: ifne          188
+     165: aload         6
+     167: invokevirtual #140                // Method java/time/Instant.toString:()Ljava/lang/String;
+     170: aload_0
+     171: ldc           #137                // String submittedAt
+     173: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     178: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     181: ifeq          188
+     184: iconst_1
+     185: goto          189
+     188: iconst_0
+     189: invokestatic  #113                // Method require:(Z)V
+     192: return
+
+  private static void identity(java.util.Map<java.lang.String, java.lang.Object>, long, long);
+    Code:
+       0: aload_0
+       1: ldc           #132                // String taskListId
+       3: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       8: invokestatic  #121                // Method number:(Ljava/lang/Object;)J
+      11: lload_1
+      12: lcmp
+      13: ifne          36
+      16: aload_0
+      17: ldc           #133                // String samplingPointId
+      19: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      24: invokestatic  #121                // Method number:(Ljava/lang/Object;)J
+      27: lload_3
+      28: lcmp
+      29: ifne          36
+      32: iconst_1
+      33: goto          37
+      36: iconst_0
+      37: invokestatic  #113                // Method require:(Z)V
+      40: return
+
+  private static void validateInput(java.util.Map<java.lang.String, java.lang.Object>, java.lang.String);
+    Code:
+       0: aload_0
+       1: ifnull        25
+       4: aload_0
+       5: invokeinterface #110,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+      10: getstatic     #115                // Field INPUT:Ljava/util/Set;
+      13: invokeinterface #112,  2          // InterfaceMethod java/util/Set.equals:(Ljava/lang/Object;)Z
+      18: ifeq          25
+      21: iconst_1
+      22: goto          26
+      25: iconst_0
+      26: invokestatic  #113                // Method require:(Z)V
+      29: getstatic     #115                // Field INPUT:Ljava/util/Set;
+      32: invokeinterface #116,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      37: astore_2
+      38: aload_2
+      39: invokeinterface #117,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      44: ifeq          112
+      47: aload_2
+      48: invokeinterface #118,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      53: checkcast     #71                 // class java/lang/String
+      56: astore_3
+      57: ldc           #119                // String snapshotDigest
+      59: aload_3
+      60: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      63: ifeq          69
+      66: goto          38
+      69: ldc           #61                 // String expectedVersion
+      71: aload_3
+      72: invokevirtual #30                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      75: ifeq          82
+      78: lconst_0
+      79: goto          83
+      82: lconst_1
+      83: lstore        4
+      85: aload_0
+      86: aload_3
+      87: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      92: invokestatic  #121                // Method number:(Ljava/lang/Object;)J
+      95: lload         4
+      97: lcmp
+      98: iflt          105
+     101: iconst_1
+     102: goto          106
+     105: iconst_0
+     106: invokestatic  #113                // Method require:(Z)V
+     109: goto          38
+     112: aload_0
+     113: ldc           #119                // String snapshotDigest
+     115: invokeinterface #120,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     120: invokestatic  #122                // Method hash:(Ljava/lang/Object;)Z
+     123: invokestatic  #113                // Method require:(Z)V
+     126: goto          140
+     129: astore_2
+     130: sipush        400
+     133: ldc           #23                 // String POINT_EVIDENCE_REQUEST_INVALID
+     135: aload_1
+     136: invokestatic  #24                 // Method error:(ILjava/lang/String;Ljava/lang/String;)Lcom/lei/mobile/MobileContractException;
+     139: athrow
+     140: return
+    Exception table:
+       from    to  target type
+           0   126   129   Class java/lang/RuntimeException
+
+  private static long number(java.lang.Object);
+    Code:
+       0: aload_0
+       1: instanceof    #100                // class java/lang/Integer
+       4: ifne          14
+       7: aload_0
+       8: instanceof    #160                // class java/lang/Long
+      11: ifeq          18
+      14: iconst_1
+      15: goto          19
+      18: iconst_0
+      19: invokestatic  #113                // Method require:(Z)V
+      22: aload_0
+      23: checkcast     #161                // class java/lang/Number
+      26: invokevirtual #162                // Method java/lang/Number.longValue:()J
+      29: lreturn
+
+  private static boolean hash(java.lang.Object);
+    Code:
+       0: aload_0
+       1: instanceof    #71                 // class java/lang/String
+       4: ifeq          23
+       7: aload_0
+       8: checkcast     #71                 // class java/lang/String
+      11: ldc           #163                // String [0-9a-f]{64}
+      13: invokevirtual #164                // Method java/lang/String.matches:(Ljava/lang/String;)Z
+      16: ifeq          23
+      19: iconst_1
+      20: goto          24
+      23: iconst_0
+      24: ireturn
+
+  private static boolean uuid(java.lang.String);
+    Code:
+       0: aload_0
+       1: ifnull        17
+       4: aload_0
+       5: ldc           #165                // String [0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}
+       7: invokevirtual #164                // Method java/lang/String.matches:(Ljava/lang/String;)Z
+      10: ifeq          17
+      13: iconst_1
+      14: goto          18
+      17: iconst_0
+      18: ireturn
+
+  private static java.util.Set<java.lang.String> keys(java.lang.String...);
+    Code:
+       0: new           #166                // class java/util/HashSet
+       3: dup
+       4: aload_0
+       5: invokestatic  #101                // Method java/util/Arrays.asList:([Ljava/lang/Object;)Ljava/util/List;
+       8: invokespecial #167                // Method java/util/HashSet."<init>":(Ljava/util/Collection;)V
+      11: areturn
+
+  private static void require(boolean);
+    Code:
+       0: iload_0
+       1: ifne          12
+       4: new           #83                 // class java/lang/IllegalArgumentException
+       7: dup
+       8: invokespecial #84                 // Method java/lang/IllegalArgumentException."<init>":()V
+      11: athrow
+      12: return
+
+  private static com.lei.mobile.MobileContractException error(int, java.lang.String, java.lang.String);
+    Code:
+       0: new           #97                 // class com/lei/mobile/MobileContractException
+       3: dup
+       4: iload_0
+       5: invokestatic  #168                // Method org/springframework/http/HttpStatus.valueOf:(I)Lorg/springframework/http/HttpStatus;
+       8: aload_1
+       9: ldc           #169                // String 读取原请求结果；不自动重发
+      11: aload_2
+      12: invokestatic  #22                 // Method uuid:(Ljava/lang/String;)Z
+      15: ifeq          22
+      18: aload_2
+      19: goto          24
+      22: ldc           #170                // String 00000000-0000-4000-8000-000000000000
+      24: iconst_0
+      25: aconst_null
+      26: invokespecial #171                // Method com/lei/mobile/MobileContractException."<init>":(Lorg/springframework/http/HttpStatus;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;)V
+      29: areturn
+
+  private static com.lei.mobile.auth.MobileSession lambda$new$0(com.lei.mobile.auth.MobileTokenService, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #172                // Method com/lei/mobile/auth/MobileTokenService.authenticate:(Ljava/lang/String;)Lcom/lei/mobile/auth/MobileSession;
+       5: areturn
+
+  static {};
+    Code:
+       0: bipush        8
+       2: anewarray     #71                 // class java/lang/String
+       5: dup
+       6: iconst_0
+       7: ldc           #173                // String orderId
+       9: aastore
+      10: dup
+      11: iconst_1
+      12: ldc           #174                // String taskPoolId
+      14: aastore
+      15: dup
+      16: iconst_2
+      17: ldc           #146                // String planId
+      19: aastore
+      20: dup
+      21: iconst_3
+      22: ldc           #147                // String planVersion
+      24: aastore
+      25: dup
+      26: iconst_4
+      27: ldc           #175                // String assignmentVersion
+      29: aastore
+      30: dup
+      31: iconst_5
+      32: ldc           #176                // String snapshotVersion
+      34: aastore
+      35: dup
+      36: bipush        6
+      38: ldc           #119                // String snapshotDigest
+      40: aastore
+      41: dup
+      42: bipush        7
+      44: ldc           #61                 // String expectedVersion
+      46: aastore
+      47: invokestatic  #177                // Method keys:([Ljava/lang/String;)Ljava/util/Set;
+      50: putstatic     #115                // Field INPUT:Ljava/util/Set;
+      53: bipush        11
+      55: anewarray     #71                 // class java/lang/String
+      58: dup
+      59: iconst_0
+      60: ldc           #132                // String taskListId
+      62: aastore
+      63: dup
+      64: iconst_1
+      65: ldc           #133                // String samplingPointId
+      67: aastore
+      68: dup
+      69: iconst_2
+      70: ldc           #173                // String orderId
+      72: aastore
+      73: dup
+      74: iconst_3
+      75: ldc           #174                // String taskPoolId
+      77: aastore
+      78: dup
+      79: iconst_4
+      80: ldc           #146                // String planId
+      82: aastore
+      83: dup
+      84: iconst_5
+      85: ldc           #147                // String planVersion
+      87: aastore
+      88: dup
+      89: bipush        6
+      91: ldc           #175                // String assignmentVersion
+      93: aastore
+      94: dup
+      95: bipush        7
+      97: ldc           #176                // String snapshotVersion
+      99: aastore
+     100: dup
+     101: bipush        8
+     103: ldc           #119                // String snapshotDigest
+     105: aastore
+     106: dup
+     107: bipush        9
+     109: ldc           #61                 // String expectedVersion
+     111: aastore
+     112: dup
+     113: bipush        10
+     115: ldc           #125                // String state
+     117: aastore
+     118: invokestatic  #177                // Method keys:([Ljava/lang/String;)Ljava/util/Set;
+     121: putstatic     #111                // Field CONTEXT:Ljava/util/Set;
+     124: bipush        10
+     126: anewarray     #71                 // class java/lang/String
+     129: dup
+     130: iconst_0
+     131: ldc           #130                // String outcome
+     133: aastore
+     134: dup
+     135: iconst_1
+     136: ldc           #132                // String taskListId
+     138: aastore
+     139: dup
+     140: iconst_2
+     141: ldc           #133                // String samplingPointId
+     143: aastore
+     144: dup
+     145: iconst_3
+     146: ldc           #146                // String planId
+     148: aastore
+     149: dup
+     150: iconst_4
+     151: ldc           #147                // String planVersion
+     153: aastore
+     154: dup
+     155: iconst_5
+     156: ldc           #134                // String version
+     158: aastore
+     159: dup
+     160: bipush        6
+     162: ldc           #135                // String receiptCount
+     164: aastore
+     165: dup
+     166: bipush        7
+     168: ldc           #137                // String submittedAt
+     170: aastore
+     171: dup
+     172: bipush        8
+     174: ldc           #136                // String packageDigest
+     176: aastore
+     177: dup
+     178: bipush        9
+     180: ldc           #148                // String requestId
+     182: aastore
+     183: invokestatic  #177                // Method keys:([Ljava/lang/String;)Ljava/util/Set;
+     186: putstatic     #158                // Field RECEIPT:Ljava/util/Set;
+     189: iconst_3
+     190: anewarray     #71                 // class java/lang/String
+     193: dup
+     194: iconst_0
+     195: ldc           #125                // String state
+     197: aastore
+     198: dup
+     199: iconst_1
+     200: ldc           #148                // String requestId
+     202: aastore
+     203: dup
+     204: iconst_2
+     205: ldc           #153                // String receipt
+     207: aastore
+     208: invokestatic  #177                // Method keys:([Ljava/lang/String;)Ljava/util/Set;
+     211: putstatic     #151                // Field LEGACY_RESULT:Ljava/util/Set;
+     214: bipush        8
+     216: anewarray     #71                 // class java/lang/String
+     219: dup
+     220: iconst_0
+     221: ldc           #130                // String outcome
+     223: aastore
+     224: dup
+     225: iconst_1
+     226: ldc           #132                // String taskListId
+     228: aastore
+     229: dup
+     230: iconst_2
+     231: ldc           #133                // String samplingPointId
+     233: aastore
+     234: dup
+     235: iconst_3
+     236: ldc           #131                // String status
+     238: aastore
+     239: dup
+     240: iconst_4
+     241: ldc           #134                // String version
+     243: aastore
+     244: dup
+     245: iconst_5
+     246: ldc           #135                // String receiptCount
+     248: aastore
+     249: dup
+     250: bipush        6
+     252: ldc           #137                // String submittedAt
+     254: aastore
+     255: dup
+     256: bipush        7
+     258: ldc           #136                // String packageDigest
+     260: aastore
+     261: invokestatic  #177                // Method keys:([Ljava/lang/String;)Ljava/util/Set;
+     264: putstatic     #129                // Field CORE_RECEIPT:Ljava/util/Set;
+     267: return
+}

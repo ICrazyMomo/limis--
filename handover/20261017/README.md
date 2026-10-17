@@ -1,33 +1,50 @@
-# 领样 FOCUS-04 证据交接 · 2026-10-17
+# 领样 FOCUS-04 + Jarvis 接手交接 · 2026-10-17
 
-本目录为 **1017-LINGYANG-FOCUS-04** 证据包的公开仓增量交接：领样 F5sixth 测3（甲73 · 空停①）相关 RESULTS、产品裁、截图、tip/FE 钉、Vue 摘录、verification 旁证窗、准修/停工边界等。**挂上≠PASS**；本包为 FAIL 裁票与旁证材料，不得因入库或挂载自扩为通过。
+本目录为 **2026-10-17** 公开仓 `ICrazyMomo/limis--` 的增量交接（非空仓重导）。同级保留 `handover/20261016/` 与下文「首包」路径不动。
 
-同级保留 `handover/20261016/` 全量交接，本提交不覆盖、不删除既有目录。
+**挂上≠PASS** · **HTTP200≠PASS** · 证据入库≠产品裁通过。
 
-## 包位置与校验
+## 入口索引
+
+| 路径 | 用途 |
+| --- | --- |
+| **`jarvis-handoff/`** | **主入口**：`交接-Jarvis-给新GrokBot-接手以来做了什么-20261017.md`、演示主链/Codex 三线、migrate-pack、bot-memory、交接§3 十条 `deliver-tip-*`、FOCUS-04 含响体/DIAG 补交、PRODUCT-STAMP/VERIFY 等 |
+| `1017-LINGYANG-FOCUS-04-evidence/` | 首包 FOCUS-04 证据（PR 初版；jarvis-handoff 内为更新版含 `09-测3-DIAG补交` 等） |
+| `jarvis-handoff/CODE-PUSH-03-bundles/` | CODE-PUSH-03 git bundle：**仅 README + SHA256SUMS**；`.bundle` 在 Release |
+
+Jarvis 交接总述见：`jarvis-handoff/交接-Jarvis-给新GrokBot-接手以来做了什么-20261017.md`（sha16 见同目录 `.sha16`）。
+
+## 本批推送校验（Boss 附件）
+
+| 附件 | sha16 | 落盘 |
+| --- | --- | --- |
+| `part-docs-tips.zip` | `19a235d069070fbd` | 展开 → `jarvis-handoff/` |
+| `code-push-bundles-half2.zip` | `9f33a4bae13c6f6e` | Release 附件（git 不进 `.bundle`） |
+| `code-push-bundles-half1.zip` | `813b9593499829a8` | **待下一帖** |
+
+推送清单：`jarvis-handoff/MANIFEST-handover-push-20261017.md` · bundle 校验：`jarvis-handoff/CODE-PUSH-03-bundles/SHA256SUMS.txt`
+
+Release tag：`handover-20261017-code-push-bundles` → <https://github.com/ICrazyMomo/limis--/releases/tag/handover-20261017-code-push-bundles>
+
+## 首包 FOCUS-04（`1017-LINGYANG-FOCUS-04-evidence/`）
 
 | 项 | 值 |
 | --- | --- |
-| 展开路径 | `1017-LINGYANG-FOCUS-04-evidence/` |
-| 清单 | `1017-LINGYANG-FOCUS-04-evidence/INDEX.md` |
-| INDEX sha16 | `6fef17ab39c90309` |
-| 源 zip（本地交接名） | `1017-LINGYANG-FOCUS-04-evidence.zip` |
-| 源 zip sha256 前 16 位 | `c97bfbd9a9a443f9` |
+| 清单 | `INDEX.md` |
+| INDEX sha16（首包） | `6fef17ab39c90309` |
+| 源 zip sha16（首帖附件） | `c97bfbd9a9a443f9` |
 
-详细条目与票号见包内 `INDEX.md`（FAIL裁 `ffd0b7c2` · RESULTS `b3fa54f1` · tip `b9e2e413` · FE `9b695797`）。
+jarvis-handoff 内 FOCUS-04 为补交后 INDEX（sha16 以 `jarvis-handoff/1017-LINGYANG-FOCUS-04-evidence/INDEX.md.sha16` 为准）。
 
-## 缺项（如实，未补齐勿当 PASS）
+## 缺项（未补齐勿当 PASS）
 
 | 项 | 说明 |
 | --- | --- |
-| Vue `page.evaluate` 五元组 dump | evaluate 被拦；仅有 `05-vue-extract/` DOM 替代摘录 |
-| 本枪 verification×view-sessions **响应体全文** | RESULTS 仅记成对 HTTP 200；本枪窗 RAW/响体 **无** |
-| 本枪 HAR / Network trace | **无** 独立 HAR 或 trace 文件 |
-| 本枪夹具造态 SQL 专用件 | 入口以 RESULTS 为准；无另存 BEFORE-AFTER SQL |
-
-旁证目录 `06-verification-view-sessions/` 为 G1/G2/测3早窗，**非**本枪 08:34 时刻全文；不得用旁证自扩本枪 PASS。
+| Vue `page.evaluate` 五元组 dump | evaluate 被拦；DOM 摘录 / DIAG 补交字段见 jarvis-handoff 证据树 |
+| 本枪 verification 响体全文 / HAR | 旁证窗在 `06-verification-view-sessions/`；本枪独立 HAR **无** |
+| CODE-PUSH half1 | bundle zip 未齐 |
 
 ## 红线
 
-- 密钥、token、预签 URL **未**入 git 树；文中仅流程说明或脱敏引用。
-- 禁止复挂 tip `b9e2e413` / `46664856` / `6d70` 等已冻钉（见包内 PRODUCT-STAMP / OPS 件）。
+- 密钥、token、`.env` **未**入 git 树。
+- 禁止复挂已冻 tip（见 jarvis-handoff 内 PRODUCT-STAMP / OPS）。

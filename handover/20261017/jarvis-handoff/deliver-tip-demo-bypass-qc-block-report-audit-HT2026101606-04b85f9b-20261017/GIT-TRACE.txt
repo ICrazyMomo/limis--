@@ -1,0 +1,12 @@
+repo=/workspace/artifacts/deliver-tip-demo-bypass-qc-block-report-audit-HT2026101606-04b85f9b-20261017/tip-git (box local tip-git; not limis-web master)
+worktree=/workspace/artifacts/deliver-tip-demo-bypass-qc-block-report-audit-HT2026101606-04b85f9b-20261017/tip-git
+branch=tip/demo-bypass-qc-block-report-audit-HT2026101606-04b85f9b-20261017
+commit.full=0955febf3227aef2ca5114808be36120b824c624
+commit.short=0955febf
+tag=tip/0955febf-on-b4eedcf1
+PRE=b4eedcf1
+PATCH_SHA16=e7d2f3b18c2fe075
+ORIG_SHA16=bb4d9ec345d066be
+stamp=04b85f9b
+remote=none (box local only)
+wall=2026-10-17 09:06 Asia/Shanghai

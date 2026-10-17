@@ -1,0 +1,12 @@
+repo=/workspace/scratch/limis-ready/limis-web
+worktree=/workspace/scratch/claude-mod-bff-submit/git-wt
+branch=tip/bff-evidence-submit-plural-on-0b0a8f2e-20261017
+commit_full=dbcd08cb943ff73a97ec3a9e16fb195302ed1c2f
+commit_short=dbcd08cb
+tag=tip/b987a3f4-on-0b0a8f2e
+stack_on_FINAL=0b0a8f2e
+remote=none
+src_in_repo=lei-mobile-bff/src/main/java/com/lei/mobile/evidence/PointEvidenceController.java
+src_in_deliver=/workspace/artifacts/deliver-tip-bff-evidence-submit-plural-on-0b0a8f2e-20261017/src/com/lei/mobile/evidence/PointEvidenceController.java
+PRE_class_sha16=fab1cbbed675e551
+PATCHED_class_sha16=b987a3f4c0aea0be

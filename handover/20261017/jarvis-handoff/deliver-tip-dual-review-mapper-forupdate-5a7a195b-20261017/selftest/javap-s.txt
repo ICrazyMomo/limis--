@@ -1,0 +1,26 @@
+Compiled from "QltWorkOrderMapper.java"
+public interface com.lei.system.mapper.QltWorkOrderMapper {
+  public abstract com.lei.system.domain.QltWorkOrder selectById(java.lang.Long);
+    descriptor: (Ljava/lang/Long;)Lcom/lei/system/domain/QltWorkOrder;
+
+  public abstract com.lei.system.domain.QltWorkOrder selectByIdForUpdate(java.lang.Long);
+    descriptor: (Ljava/lang/Long;)Lcom/lei/system/domain/QltWorkOrder;
+
+  public abstract com.lei.system.domain.QltWorkOrder selectByWorkOrderId(java.lang.String);
+    descriptor: (Ljava/lang/String;)Lcom/lei/system/domain/QltWorkOrder;
+
+  public abstract com.lei.system.domain.QltWorkOrder selectByIdempotencyKey(java.lang.Long, java.lang.String);
+    descriptor: (Ljava/lang/Long;Ljava/lang/String;)Lcom/lei/system/domain/QltWorkOrder;
+
+  public abstract java.util.List<com.lei.system.domain.QltWorkOrder> selectWorkbench(java.lang.Long, java.lang.String, java.lang.String);
+    descriptor: (Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+
+  public abstract int insert(com.lei.system.domain.QltWorkOrder);
+    descriptor: (Lcom/lei/system/domain/QltWorkOrder;)I
+
+  public abstract int advanceStatus(java.lang.Long, java.lang.Integer, java.lang.String, java.lang.Long, java.util.Date);
+    descriptor: (Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/util/Date;)I
+
+  public abstract int advanceStatusWithOpenCount(java.lang.Long, java.lang.Integer, java.lang.String, java.lang.Integer, java.lang.String, java.lang.Long, java.util.Date);
+    descriptor: (Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/util/Date;)I
+}

@@ -1,0 +1,8 @@
+/* Optional: if static assets allow appending CSS next to chunk hang.
+   Warehouse scoped styles for forms snapshot readback. */
+.mb8 { margin-bottom: 8px; }
+.readback-fields { display: flex; flex-direction: column; gap: 8px; }
+.readback-row { display: flex; padding: 8px 12px; border: 1px solid #e4e7ed; border-radius: 4px; }
+.readback-label { flex: 0 0 220px; color: #606266; font-weight: 600; }
+.readback-value { flex: 1; color: #303133; word-break: break-all; }
+.readback-empty { padding: 16px; color: #909399; text-align: center; }

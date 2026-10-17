@@ -1,0 +1,12 @@
+Compiled from "QltWorkOrderMapper.java"
+public interface com.lei.system.mapper.QltWorkOrderMapper {
+  public abstract com.lei.system.domain.QltWorkOrder selectById(java.lang.Long);
+  public abstract com.lei.system.domain.QltWorkOrder selectByIdForUpdate(java.lang.Long);
+  public abstract java.util.List<java.lang.Long> selectUnresolvedProblemIdsForUpdate(java.lang.Long);
+  public abstract com.lei.system.domain.QltWorkOrder selectByWorkOrderId(java.lang.String);
+  public abstract com.lei.system.domain.QltWorkOrder selectByIdempotencyKey(java.lang.Long, java.lang.String);
+  public abstract java.util.List<com.lei.system.domain.QltWorkOrder> selectWorkbench(java.lang.Long, java.lang.String, java.lang.String);
+  public abstract int insert(com.lei.system.domain.QltWorkOrder);
+  public abstract int advanceStatus(java.lang.Long, java.lang.Integer, java.lang.String, java.lang.Long, java.util.Date);
+  public abstract int advanceStatusWithOpenCount(java.lang.Long, java.lang.Integer, java.lang.String, java.lang.Integer, java.lang.String, java.lang.Long, java.util.Date);
+}

@@ -1,0 +1,11 @@
+branch=tip/entry-config-view-ownership-align-on-b4eedcf1-1a814025-20261017
+short_sha=f28bd860
+full_sha=f28bd86021ca6b3698c3006870d34a44f1b1c127
+tag=tip/d0598290-on-b4eedcf1
+PRE_FINAL=b4eedcf1
+PATCH_Impl_sha16=d05982909028486a
+repo=deliver-tip-entry-config-view-ownership-align-on-b4eedcf1-1a814025-20261017/tip-git
+remote=none
+git_branch_exists=yes
+git_tag_exists=yes
+note=RD-VERIFY-44700eaa补齐：tip-git 已建分支+tag 点 HEAD f28bd860；class 字节未改

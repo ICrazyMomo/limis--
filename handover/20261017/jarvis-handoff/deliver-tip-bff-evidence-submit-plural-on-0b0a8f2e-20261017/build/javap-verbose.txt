@@ -1,0 +1,1075 @@
+Classfile /workspace/scratch/claude-mod-bff-submit/classes/com/lei/mobile/evidence/PointEvidenceController.class
+  Last modified Oct 17, 2026; size 18407 bytes
+  MD5 checksum 69b94d5e3e805c487efbb95fa720ca0d
+  Compiled from "PointEvidenceController.java"
+public class com.lei.mobile.evidence.PointEvidenceController
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+    #1 = InvokeDynamic      #0:#307       // #0:apply:(Lcom/lei/mobile/auth/MobileTokenService;)Ljava/util/function/Function;
+    #2 = Methodref          #31.#308      // com/lei/mobile/evidence/PointEvidenceController."<init>":(Ljava/util/function/Function;Lorg/springframework/web/client/RestTemplate;Ljava/lang/String;Ljava/lang/String;Lcom/fasterxml/jackson/databind/ObjectMapper;)V
+    #3 = Methodref          #178.#309     // java/lang/Object."<init>":()V
+    #4 = Fieldref           #31.#310      // com/lei/mobile/evidence/PointEvidenceController.sessions:Ljava/util/function/Function;
+    #5 = Fieldref           #31.#311      // com/lei/mobile/evidence/PointEvidenceController.rest:Lorg/springframework/web/client/RestTemplate;
+    #6 = String             #312          // /+$
+    #7 = String             #313          //
+    #8 = Methodref          #71.#314      // java/lang/String.replaceAll:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    #9 = Fieldref           #31.#315      // com/lei/mobile/evidence/PointEvidenceController.base:Ljava/lang/String;
+   #10 = Fieldref           #31.#316      // com/lei/mobile/evidence/PointEvidenceController.key:Ljava/lang/String;
+   #11 = Methodref          #317.#318     // com/fasterxml/jackson/databind/ObjectMapper.copy:()Lcom/fasterxml/jackson/databind/ObjectMapper;
+   #12 = Class              #320          // com/fasterxml/jackson/core/JsonParser$Feature
+   #13 = Fieldref           #12.#323      // com/fasterxml/jackson/core/JsonParser$Feature.STRICT_DUPLICATE_DETECTION:Lcom/fasterxml/jackson/core/JsonParser$Feature;
+   #14 = Methodref          #317.#324     // com/fasterxml/jackson/databind/ObjectMapper.enable:([Lcom/fasterxml/jackson/core/JsonParser$Feature;)Lcom/fasterxml/jackson/databind/ObjectMapper;
+   #15 = Fieldref           #325.#326     // com/fasterxml/jackson/databind/DeserializationFeature.FAIL_ON_TRAILING_TOKENS:Lcom/fasterxml/jackson/databind/DeserializationFeature;
+   #16 = Methodref          #317.#327     // com/fasterxml/jackson/databind/ObjectMapper.enable:(Lcom/fasterxml/jackson/databind/DeserializationFeature;)Lcom/fasterxml/jackson/databind/ObjectMapper;
+   #17 = Fieldref           #31.#328      // com/lei/mobile/evidence/PointEvidenceController.json:Lcom/fasterxml/jackson/databind/ObjectMapper;
+   #18 = String             #217          // context
+   #19 = Methodref          #31.#329      // com/lei/mobile/evidence/PointEvidenceController.exchange:(JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
+   #20 = Methodref          #31.#330      // com/lei/mobile/evidence/PointEvidenceController.validateInput:(Ljava/util/Map;Ljava/lang/String;)V
+   #21 = String             #229          // submit
+   #22 = Methodref          #31.#331      // com/lei/mobile/evidence/PointEvidenceController.uuid:(Ljava/lang/String;)Z
+   #23 = String             #332          // POINT_EVIDENCE_REQUEST_INVALID
+   #24 = Methodref          #31.#333      // com/lei/mobile/evidence/PointEvidenceController.error:(ILjava/lang/String;Ljava/lang/String;)Lcom/lei/mobile/MobileContractException;
+   #25 = Class              #334          // java/lang/StringBuilder
+   #26 = Methodref          #25.#309      // java/lang/StringBuilder."<init>":()V
+   #27 = String             #335          // submissions/
+   #28 = Methodref          #25.#336      // java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   #29 = Methodref          #25.#337      // java/lang/StringBuilder.toString:()Ljava/lang/String;
+   #30 = Methodref          #71.#338      // java/lang/String.equals:(Ljava/lang/Object;)Z
+   #31 = Class              #339          // com/lei/mobile/evidence/PointEvidenceController
+   #32 = String             #340          // evidence-package-point-v2
+   #33 = InterfaceMethodref #341.#342     // java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+   #34 = Class              #343          // com/lei/mobile/auth/MobileSession
+   #35 = Class              #345          // com/lei/mobile/auth/MobileTokenService$MobileAccessDeniedException
+   #36 = String             #347          // POINT_EVIDENCE_FORBIDDEN
+   #37 = Class              #348          // com/lei/mobile/auth/MobileTokenService$UnauthorizedException
+   #38 = String             #350          // SESSION_EXPIRED
+   #39 = Methodref          #34.#351      // com/lei/mobile/auth/MobileSession.getProfile:()Lcom/lei/mobile/auth/MobileProfile;
+   #40 = String             #352          // system:executeTask:execute
+   #41 = Methodref          #353.#354     // com/lei/mobile/auth/MobileProfile.hasPermission:(Ljava/lang/String;)Z
+   #42 = Class              #355          // org/springframework/http/HttpHeaders
+   #43 = Methodref          #42.#309      // org/springframework/http/HttpHeaders."<init>":()V
+   #44 = Fieldref           #356.#357     // org/springframework/http/MediaType.APPLICATION_JSON:Lorg/springframework/http/MediaType;
+   #45 = Methodref          #42.#358      // org/springframework/http/HttpHeaders.setContentType:(Lorg/springframework/http/MediaType;)V
+   #46 = Methodref          #359.#360     // java/util/Collections.singletonList:(Ljava/lang/Object;)Ljava/util/List;
+   #47 = Methodref          #42.#361      // org/springframework/http/HttpHeaders.setAccept:(Ljava/util/List;)V
+   #48 = String             #362          // X-Mobile-Service-Key
+   #49 = Methodref          #42.#363      // org/springframework/http/HttpHeaders.set:(Ljava/lang/String;Ljava/lang/String;)V
+   #50 = String             #364          // X-Trusted-User-Id
+   #51 = Methodref          #353.#365     // com/lei/mobile/auth/MobileProfile.getUserId:()J
+   #52 = Methodref          #71.#366      // java/lang/String.valueOf:(J)Ljava/lang/String;
+   #53 = String             #367          // X-Trusted-Tenant-Id
+   #54 = Methodref          #353.#368     // com/lei/mobile/auth/MobileProfile.getTenantId:()Ljava/lang/String;
+   #55 = String             #369          // X-Trusted-Session-Id
+   #56 = Methodref          #34.#370      // com/lei/mobile/auth/MobileSession.getSessionId:()Ljava/lang/String;
+   #57 = String             #228          // X-Request-Id
+   #58 = String             #371          // X-Mobile-Internal-Contract-Version
+   #59 = String             #372          // evidence-package-v1
+   #60 = String             #373          // Idempotency-Key
+   #61 = String             #374          // expectedVersion
+   #62 = Methodref          #100.#375     // java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+   #63 = Methodref          #359.#376     // java/util/Collections.singletonMap:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+   #64 = String             #377          // /internal/mobile/v1/task-lists/
+   #65 = Methodref          #25.#378      // java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+   #66 = String             #379          // /evidence-packages/submit
+   #67 = Methodref          #380.#381     // java/net/URI.create:(Ljava/lang/String;)Ljava/net/URI;
+   #68 = Fieldref           #382.#383     // org/springframework/http/HttpMethod.POST:Lorg/springframework/http/HttpMethod;
+   #69 = Class              #384          // org/springframework/http/HttpEntity
+   #70 = Methodref          #69.#385      // org/springframework/http/HttpEntity."<init>":(Ljava/lang/Object;Lorg/springframework/util/MultiValueMap;)V
+   #71 = Class              #386          // java/lang/String
+   #72 = Methodref          #387.#388     // org/springframework/web/client/RestTemplate.exchange:(Ljava/net/URI;Lorg/springframework/http/HttpMethod;Lorg/springframework/http/HttpEntity;Ljava/lang/Class;)Lorg/springframework/http/ResponseEntity;
+   #73 = Methodref          #389.#390     // org/springframework/http/ResponseEntity.getStatusCode:()Lorg/springframework/http/HttpStatus;
+   #74 = Fieldref           #391.#392     // org/springframework/http/HttpStatus.OK:Lorg/springframework/http/HttpStatus;
+   #75 = Methodref          #389.#393     // org/springframework/http/ResponseEntity.getHeaders:()Lorg/springframework/http/HttpHeaders;
+   #76 = Methodref          #42.#394      // org/springframework/http/HttpHeaders.getFirst:(Ljava/lang/String;)Ljava/lang/String;
+   #77 = Methodref          #42.#395      // org/springframework/http/HttpHeaders.getCacheControl:()Ljava/lang/String;
+   #78 = Methodref          #71.#396      // java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+   #79 = String             #397          // no-store
+   #80 = Methodref          #71.#398      // java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+   #81 = Methodref          #42.#399      // org/springframework/http/HttpHeaders.getContentType:()Lorg/springframework/http/MediaType;
+   #82 = Methodref          #356.#400     // org/springframework/http/MediaType.isCompatibleWith:(Lorg/springframework/http/MediaType;)Z
+   #83 = Class              #401          // java/lang/IllegalArgumentException
+   #84 = Methodref          #83.#309      // java/lang/IllegalArgumentException."<init>":()V
+   #85 = Methodref          #389.#402     // org/springframework/http/ResponseEntity.getBody:()Ljava/lang/Object;
+   #86 = Class              #403          // java/util/Map
+   #87 = Methodref          #317.#404     // com/fasterxml/jackson/databind/ObjectMapper.readValue:(Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;
+   #88 = Methodref          #31.#405      // com/lei/mobile/evidence/PointEvidenceController.adaptCoreSubmitReceipt:(Ljava/util/Map;JJLjava/lang/String;Ljava/util/Map;)Ljava/util/Map;
+   #89 = Methodref          #389.#406     // org/springframework/http/ResponseEntity.ok:()Lorg/springframework/http/ResponseEntity$BodyBuilder;
+   #90 = InterfaceMethodref #93.#407      // org/springframework/http/ResponseEntity$BodyBuilder.contentType:(Lorg/springframework/http/MediaType;)Lorg/springframework/http/ResponseEntity$BodyBuilder;
+   #91 = Methodref          #408.#409     // org/springframework/http/CacheControl.noStore:()Lorg/springframework/http/CacheControl;
+   #92 = InterfaceMethodref #93.#410      // org/springframework/http/ResponseEntity$BodyBuilder.cacheControl:(Lorg/springframework/http/CacheControl;)Lorg/springframework/http/ResponseEntity$HeadersBuilder;
+   #93 = Class              #411          // org/springframework/http/ResponseEntity$BodyBuilder
+   #94 = String             #227          // X-Mobile-Contract-Version
+   #95 = InterfaceMethodref #93.#413      // org/springframework/http/ResponseEntity$BodyBuilder.header:(Ljava/lang/String;[Ljava/lang/String;)Lorg/springframework/http/ResponseEntity$HeadersBuilder;
+   #96 = InterfaceMethodref #93.#414      // org/springframework/http/ResponseEntity$BodyBuilder.body:(Ljava/lang/Object;)Lorg/springframework/http/ResponseEntity;
+   #97 = Class              #415          // com/lei/mobile/MobileContractException
+   #98 = Class              #416          // org/springframework/web/client/HttpStatusCodeException
+   #99 = Methodref          #98.#417      // org/springframework/web/client/HttpStatusCodeException.getRawStatusCode:()I
+  #100 = Class              #418          // java/lang/Integer
+  #101 = Methodref          #419.#420     // java/util/Arrays.asList:([Ljava/lang/Object;)Ljava/util/List;
+  #102 = InterfaceMethodref #421.#422     // java/util/List.contains:(Ljava/lang/Object;)Z
+  #103 = String             #423          // POINT_EVIDENCE_CONTEXT_CONFLICT
+  #104 = String             #424          // POINT_EVIDENCE_RESULT_UNKNOWN
+  #105 = Class              #425          // java/lang/Exception
+  #106 = String             #426          // /points/
+  #107 = String             #427          // /evidence-package/
+  #108 = Fieldref           #382.#428     // org/springframework/http/HttpMethod.GET:Lorg/springframework/http/HttpMethod;
+  #109 = Methodref          #31.#429      // com/lei/mobile/evidence/PointEvidenceController.adaptResult:(Ljava/util/Map;JJLjava/lang/String;)Ljava/util/Map;
+  #110 = InterfaceMethodref #86.#430      // java/util/Map.keySet:()Ljava/util/Set;
+  #111 = Fieldref           #31.#431      // com/lei/mobile/evidence/PointEvidenceController.CONTEXT:Ljava/util/Set;
+  #112 = InterfaceMethodref #432.#338     // java/util/Set.equals:(Ljava/lang/Object;)Z
+  #113 = Methodref          #31.#433      // com/lei/mobile/evidence/PointEvidenceController.require:(Z)V
+  #114 = Methodref          #31.#434      // com/lei/mobile/evidence/PointEvidenceController.identity:(Ljava/util/Map;JJ)V
+  #115 = Fieldref           #31.#435      // com/lei/mobile/evidence/PointEvidenceController.INPUT:Ljava/util/Set;
+  #116 = InterfaceMethodref #432.#436     // java/util/Set.iterator:()Ljava/util/Iterator;
+  #117 = InterfaceMethodref #437.#438     // java/util/Iterator.hasNext:()Z
+  #118 = InterfaceMethodref #437.#439     // java/util/Iterator.next:()Ljava/lang/Object;
+  #119 = String             #440          // snapshotDigest
+  #120 = InterfaceMethodref #86.#441      // java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #121 = Methodref          #31.#442      // com/lei/mobile/evidence/PointEvidenceController.number:(Ljava/lang/Object;)J
+  #122 = Methodref          #31.#443      // com/lei/mobile/evidence/PointEvidenceController.hash:(Ljava/lang/Object;)Z
+  #123 = String             #444          // NOT_SUBMITTED
+  #124 = String             #445          // SUBMITTED
+  #125 = String             #446          // state
+  #126 = Methodref          #31.#447      // com/lei/mobile/evidence/PointEvidenceController.submissionNotFound:(Lorg/springframework/web/client/HttpStatusCodeException;)Z
+  #127 = Methodref          #31.#448      // com/lei/mobile/evidence/PointEvidenceController.notFound:(Ljava/lang/String;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
+  #128 = String             #449          // POINT_EVIDENCE_UNAVAILABLE
+  #129 = Fieldref           #31.#450      // com/lei/mobile/evidence/PointEvidenceController.CORE_RECEIPT:Ljava/util/Set;
+  #130 = String             #451          // outcome
+  #131 = String             #452          // status
+  #132 = String             #453          // taskListId
+  #133 = String             #454          // samplingPointId
+  #134 = String             #455          // version
+  #135 = String             #456          // receiptCount
+  #136 = String             #457          // packageDigest
+  #137 = String             #458          // submittedAt
+  #138 = Methodref          #459.#460     // java/time/Instant.parse:(Ljava/lang/CharSequence;)Ljava/time/Instant;
+  #139 = Methodref          #459.#461     // java/time/Instant.getNano:()I
+  #140 = Methodref          #459.#337     // java/time/Instant.toString:()Ljava/lang/String;
+  #141 = Class              #462          // java/util/LinkedHashMap
+  #142 = Methodref          #141.#309     // java/util/LinkedHashMap."<init>":()V
+  #143 = String             #463          // POINT_SUBMITTED
+  #144 = Methodref          #141.#464     // java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #145 = Methodref          #160.#465     // java/lang/Long.valueOf:(J)Ljava/lang/Long;
+  #146 = String             #466          // planId
+  #147 = String             #467          // planVersion
+  #148 = String             #468          // requestId
+  #149 = Methodref          #31.#469      // com/lei/mobile/evidence/PointEvidenceController.receipt:(Ljava/util/Map;JJLjava/lang/String;)V
+  #150 = Methodref          #141.#441     // java/util/LinkedHashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #151 = Fieldref           #31.#470      // com/lei/mobile/evidence/PointEvidenceController.LEGACY_RESULT:Ljava/util/Set;
+  #152 = String             #471          // APPLIED
+  #153 = String             #269          // receipt
+  #154 = String             #472          // NOT_FOUND
+  #155 = Methodref          #98.#473      // org/springframework/web/client/HttpStatusCodeException.getResponseBodyAsString:()Ljava/lang/String;
+  #156 = String             #474          // POINT_EVIDENCE_SUBMISSION_NOT_FOUND
+  #157 = String             #475          // code
+  #158 = Fieldref           #31.#476      // com/lei/mobile/evidence/PointEvidenceController.RECEIPT:Ljava/util/Set;
+  #159 = Class              #477          // java/lang/RuntimeException
+  #160 = Class              #478          // java/lang/Long
+  #161 = Class              #479          // java/lang/Number
+  #162 = Methodref          #161.#480     // java/lang/Number.longValue:()J
+  #163 = String             #481          // [0-9a-f]{64}
+  #164 = Methodref          #71.#482      // java/lang/String.matches:(Ljava/lang/String;)Z
+  #165 = String             #483          // [0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}
+  #166 = Class              #484          // java/util/HashSet
+  #167 = Methodref          #166.#485     // java/util/HashSet."<init>":(Ljava/util/Collection;)V
+  #168 = Methodref          #391.#486     // org/springframework/http/HttpStatus.valueOf:(I)Lorg/springframework/http/HttpStatus;
+  #169 = String             #487          // 读取原请求结果；不自动重发
+  #170 = String             #488          // 00000000-0000-4000-8000-000000000000
+  #171 = Methodref          #97.#489      // com/lei/mobile/MobileContractException."<init>":(Lorg/springframework/http/HttpStatus;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;)V
+  #172 = Methodref          #344.#490     // com/lei/mobile/auth/MobileTokenService.authenticate:(Ljava/lang/String;)Lcom/lei/mobile/auth/MobileSession;
+  #173 = String             #491          // orderId
+  #174 = String             #492          // taskPoolId
+  #175 = String             #493          // assignmentVersion
+  #176 = String             #494          // snapshotVersion
+  #177 = Methodref          #31.#495      // com/lei/mobile/evidence/PointEvidenceController.keys:([Ljava/lang/String;)Ljava/util/Set;
+  #178 = Class              #496          // java/lang/Object
+  #179 = Utf8               VERSION
+  #180 = Utf8               Ljava/lang/String;
+  #181 = Utf8               ConstantValue
+  #182 = Utf8               CORE_PACKAGE_CONTRACT
+  #183 = Utf8               TIP_MARKER
+  #184 = String             #497          // TIP_BFF_EVIDENCE_SUBMIT_PLURAL_ON_0b0a8f2e_20261017
+  #185 = Utf8               INPUT
+  #186 = Utf8               Ljava/util/Set;
+  #187 = Utf8               Signature
+  #188 = Utf8               Ljava/util/Set<Ljava/lang/String;>;
+  #189 = Utf8               CONTEXT
+  #190 = Utf8               RECEIPT
+  #191 = Utf8               LEGACY_RESULT
+  #192 = Utf8               CORE_RECEIPT
+  #193 = Utf8               sessions
+  #194 = Utf8               Ljava/util/function/Function;
+  #195 = Utf8               Ljava/util/function/Function<Ljava/lang/String;Lcom/lei/mobile/auth/MobileSession;>;
+  #196 = Utf8               rest
+  #197 = Utf8               Lorg/springframework/web/client/RestTemplate;
+  #198 = Utf8               base
+  #199 = Utf8               key
+  #200 = Utf8               json
+  #201 = Utf8               Lcom/fasterxml/jackson/databind/ObjectMapper;
+  #202 = Utf8               <init>
+  #203 = Utf8               (Lcom/lei/mobile/auth/MobileTokenService;Lorg/springframework/web/client/RestTemplate;Ljava/lang/String;Ljava/lang/String;Lcom/fasterxml/jackson/databind/ObjectMapper;)V
+  #204 = Utf8               Code
+  #205 = Utf8               LineNumberTable
+  #206 = Utf8               RuntimeVisibleAnnotations
+  #207 = Utf8               Lorg/springframework/beans/factory/annotation/Autowired;
+  #208 = Utf8               RuntimeVisibleParameterAnnotations
+  #209 = Utf8               Lorg/springframework/beans/factory/annotation/Qualifier;
+  #210 = Utf8               value
+  #211 = Utf8               coreInternalRestTemplate
+  #212 = Utf8               Lorg/springframework/beans/factory/annotation/Value;
+  #213 = Utf8               ${mobile.core-internal-base-url}
+  #214 = Utf8               ${mobile.internal-service-key}
+  #215 = Utf8               (Ljava/util/function/Function;Lorg/springframework/web/client/RestTemplate;Ljava/lang/String;Ljava/lang/String;Lcom/fasterxml/jackson/databind/ObjectMapper;)V
+  #216 = Utf8               (Ljava/util/function/Function<Ljava/lang/String;Lcom/lei/mobile/auth/MobileSession;>;Lorg/springframework/web/client/RestTemplate;Ljava/lang/String;Ljava/lang/String;Lcom/fasterxml/jackson/databind/ObjectMapper;)V
+  #217 = Utf8               context
+  #218 = Utf8               (JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
+  #219 = Utf8               (JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity<Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;>;
+  #220 = Utf8               Lorg/springframework/web/bind/annotation/GetMapping;
+  #221 = Utf8               /context
+  #222 = Utf8               Lorg/springframework/web/bind/annotation/PathVariable;
+  #223 = Utf8               task
+  #224 = Utf8               point
+  #225 = Utf8               Lorg/springframework/web/bind/annotation/RequestHeader;
+  #226 = Utf8               Authorization
+  #227 = Utf8               X-Mobile-Contract-Version
+  #228 = Utf8               X-Request-Id
+  #229 = Utf8               submit
+  #230 = Utf8               (JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lorg/springframework/http/ResponseEntity;
+  #231 = Utf8               (JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)Lorg/springframework/http/ResponseEntity<Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;>;
+  #232 = Utf8               Lorg/springframework/web/bind/annotation/PostMapping;
+  #233 = Utf8               /submit
+  #234 = Utf8               Lorg/springframework/web/bind/annotation/RequestBody;
+  #235 = Utf8               result
+  #236 = Utf8               (JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
+  #237 = Utf8               StackMapTable
+  #238 = Utf8               (JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity<Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;>;
+  #239 = Utf8               /submissions/{submissionId}
+  #240 = Utf8               submissionId
+  #241 = Utf8               exchange
+  #242 = Utf8               (JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
+  #243 = Class              #345          // com/lei/mobile/auth/MobileTokenService$MobileAccessDeniedException
+  #244 = Class              #348          // com/lei/mobile/auth/MobileTokenService$UnauthorizedException
+  #245 = Class              #339          // com/lei/mobile/evidence/PointEvidenceController
+  #246 = Class              #386          // java/lang/String
+  #247 = Class              #403          // java/util/Map
+  #248 = Class              #343          // com/lei/mobile/auth/MobileSession
+  #249 = Class              #355          // org/springframework/http/HttpHeaders
+  #250 = Class              #498          // org/springframework/http/ResponseEntity
+  #251 = Class              #415          // com/lei/mobile/MobileContractException
+  #252 = Class              #416          // org/springframework/web/client/HttpStatusCodeException
+  #253 = Class              #425          // java/lang/Exception
+  #254 = Class              #499          // java/util/Iterator
+  #255 = Utf8               (JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity<Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;>;
+  #256 = Utf8               adaptCoreSubmitReceipt
+  #257 = Utf8               (Ljava/util/Map;JJLjava/lang/String;Ljava/util/Map;)Ljava/util/Map;
+  #258 = Class              #500          // java/time/Instant
+  #259 = Class              #462          // java/util/LinkedHashMap
+  #260 = Utf8               (Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;JJLjava/lang/String;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;
+  #261 = Utf8               adaptResult
+  #262 = Utf8               (Ljava/util/Map;JJLjava/lang/String;)Ljava/util/Map;
+  #263 = Utf8               (Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;JJLjava/lang/String;)Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;
+  #264 = Utf8               notFound
+  #265 = Utf8               (Ljava/lang/String;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
+  #266 = Utf8               (Ljava/lang/String;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity<Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;>;
+  #267 = Utf8               submissionNotFound
+  #268 = Utf8               (Lorg/springframework/web/client/HttpStatusCodeException;)Z
+  #269 = Utf8               receipt
+  #270 = Utf8               (Ljava/util/Map;JJLjava/lang/String;)V
+  #271 = Utf8               (Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;JJLjava/lang/String;)V
+  #272 = Utf8               identity
+  #273 = Utf8               (Ljava/util/Map;JJ)V
+  #274 = Utf8               (Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;JJ)V
+  #275 = Utf8               validateInput
+  #276 = Utf8               (Ljava/util/Map;Ljava/lang/String;)V
+  #277 = Class              #477          // java/lang/RuntimeException
+  #278 = Utf8               (Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;Ljava/lang/String;)V
+  #279 = Utf8               number
+  #280 = Utf8               (Ljava/lang/Object;)J
+  #281 = Utf8               hash
+  #282 = Utf8               (Ljava/lang/Object;)Z
+  #283 = Utf8               uuid
+  #284 = Utf8               (Ljava/lang/String;)Z
+  #285 = Utf8               keys
+  #286 = Utf8               ([Ljava/lang/String;)Ljava/util/Set;
+  #287 = Utf8               ([Ljava/lang/String;)Ljava/util/Set<Ljava/lang/String;>;
+  #288 = Utf8               require
+  #289 = Utf8               (Z)V
+  #290 = Utf8               error
+  #291 = Utf8               (ILjava/lang/String;Ljava/lang/String;)Lcom/lei/mobile/MobileContractException;
+  #292 = Class              #501          // org/springframework/http/HttpStatus
+  #293 = Utf8               lambda$new$0
+  #294 = Utf8               (Lcom/lei/mobile/auth/MobileTokenService;Ljava/lang/String;)Lcom/lei/mobile/auth/MobileSession;
+  #295 = Utf8               <clinit>
+  #296 = Utf8               ()V
+  #297 = Utf8               SourceFile
+  #298 = Utf8               PointEvidenceController.java
+  #299 = Utf8               Lorg/springframework/web/bind/annotation/RestController;
+  #300 = Utf8               Lorg/springframework/web/bind/annotation/RequestMapping;
+  #301 = Utf8               /api/mobile/v1/task-lists/{task}/points/{point}/evidence-package
+  #302 = Utf8               BootstrapMethods
+  #303 = MethodHandle       #6:#502       // invokestatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #304 = MethodType         #503          //  (Ljava/lang/Object;)Ljava/lang/Object;
+  #305 = MethodHandle       #6:#504       // invokestatic com/lei/mobile/evidence/PointEvidenceController.lambda$new$0:(Lcom/lei/mobile/auth/MobileTokenService;Ljava/lang/String;)Lcom/lei/mobile/auth/MobileSession;
+  #306 = MethodType         #505          //  (Ljava/lang/String;)Lcom/lei/mobile/auth/MobileSession;
+  #307 = NameAndType        #506:#507     // apply:(Lcom/lei/mobile/auth/MobileTokenService;)Ljava/util/function/Function;
+  #308 = NameAndType        #202:#215     // "<init>":(Ljava/util/function/Function;Lorg/springframework/web/client/RestTemplate;Ljava/lang/String;Ljava/lang/String;Lcom/fasterxml/jackson/databind/ObjectMapper;)V
+  #309 = NameAndType        #202:#296     // "<init>":()V
+  #310 = NameAndType        #193:#194     // sessions:Ljava/util/function/Function;
+  #311 = NameAndType        #196:#197     // rest:Lorg/springframework/web/client/RestTemplate;
+  #312 = Utf8               /+$
+  #313 = Utf8
+  #314 = NameAndType        #508:#509     // replaceAll:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #315 = NameAndType        #198:#180     // base:Ljava/lang/String;
+  #316 = NameAndType        #199:#180     // key:Ljava/lang/String;
+  #317 = Class              #510          // com/fasterxml/jackson/databind/ObjectMapper
+  #318 = NameAndType        #511:#512     // copy:()Lcom/fasterxml/jackson/databind/ObjectMapper;
+  #319 = Class              #513          // com/fasterxml/jackson/core/JsonParser
+  #320 = Utf8               com/fasterxml/jackson/core/JsonParser$Feature
+  #321 = Utf8               Feature
+  #322 = Utf8               InnerClasses
+  #323 = NameAndType        #514:#515     // STRICT_DUPLICATE_DETECTION:Lcom/fasterxml/jackson/core/JsonParser$Feature;
+  #324 = NameAndType        #516:#517     // enable:([Lcom/fasterxml/jackson/core/JsonParser$Feature;)Lcom/fasterxml/jackson/databind/ObjectMapper;
+  #325 = Class              #518          // com/fasterxml/jackson/databind/DeserializationFeature
+  #326 = NameAndType        #519:#520     // FAIL_ON_TRAILING_TOKENS:Lcom/fasterxml/jackson/databind/DeserializationFeature;
+  #327 = NameAndType        #516:#521     // enable:(Lcom/fasterxml/jackson/databind/DeserializationFeature;)Lcom/fasterxml/jackson/databind/ObjectMapper;
+  #328 = NameAndType        #200:#201     // json:Lcom/fasterxml/jackson/databind/ObjectMapper;
+  #329 = NameAndType        #241:#242     // exchange:(JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
+  #330 = NameAndType        #275:#276     // validateInput:(Ljava/util/Map;Ljava/lang/String;)V
+  #331 = NameAndType        #283:#284     // uuid:(Ljava/lang/String;)Z
+  #332 = Utf8               POINT_EVIDENCE_REQUEST_INVALID
+  #333 = NameAndType        #290:#291     // error:(ILjava/lang/String;Ljava/lang/String;)Lcom/lei/mobile/MobileContractException;
+  #334 = Utf8               java/lang/StringBuilder
+  #335 = Utf8               submissions/
+  #336 = NameAndType        #522:#523     // append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #337 = NameAndType        #524:#525     // toString:()Ljava/lang/String;
+  #338 = NameAndType        #526:#282     // equals:(Ljava/lang/Object;)Z
+  #339 = Utf8               com/lei/mobile/evidence/PointEvidenceController
+  #340 = Utf8               evidence-package-point-v2
+  #341 = Class              #527          // java/util/function/Function
+  #342 = NameAndType        #506:#503     // apply:(Ljava/lang/Object;)Ljava/lang/Object;
+  #343 = Utf8               com/lei/mobile/auth/MobileSession
+  #344 = Class              #528          // com/lei/mobile/auth/MobileTokenService
+  #345 = Utf8               com/lei/mobile/auth/MobileTokenService$MobileAccessDeniedException
+  #346 = Utf8               MobileAccessDeniedException
+  #347 = Utf8               POINT_EVIDENCE_FORBIDDEN
+  #348 = Utf8               com/lei/mobile/auth/MobileTokenService$UnauthorizedException
+  #349 = Utf8               UnauthorizedException
+  #350 = Utf8               SESSION_EXPIRED
+  #351 = NameAndType        #529:#530     // getProfile:()Lcom/lei/mobile/auth/MobileProfile;
+  #352 = Utf8               system:executeTask:execute
+  #353 = Class              #531          // com/lei/mobile/auth/MobileProfile
+  #354 = NameAndType        #532:#284     // hasPermission:(Ljava/lang/String;)Z
+  #355 = Utf8               org/springframework/http/HttpHeaders
+  #356 = Class              #533          // org/springframework/http/MediaType
+  #357 = NameAndType        #534:#535     // APPLICATION_JSON:Lorg/springframework/http/MediaType;
+  #358 = NameAndType        #536:#537     // setContentType:(Lorg/springframework/http/MediaType;)V
+  #359 = Class              #538          // java/util/Collections
+  #360 = NameAndType        #539:#540     // singletonList:(Ljava/lang/Object;)Ljava/util/List;
+  #361 = NameAndType        #541:#542     // setAccept:(Ljava/util/List;)V
+  #362 = Utf8               X-Mobile-Service-Key
+  #363 = NameAndType        #543:#544     // set:(Ljava/lang/String;Ljava/lang/String;)V
+  #364 = Utf8               X-Trusted-User-Id
+  #365 = NameAndType        #545:#546     // getUserId:()J
+  #366 = NameAndType        #547:#548     // valueOf:(J)Ljava/lang/String;
+  #367 = Utf8               X-Trusted-Tenant-Id
+  #368 = NameAndType        #549:#525     // getTenantId:()Ljava/lang/String;
+  #369 = Utf8               X-Trusted-Session-Id
+  #370 = NameAndType        #550:#525     // getSessionId:()Ljava/lang/String;
+  #371 = Utf8               X-Mobile-Internal-Contract-Version
+  #372 = Utf8               evidence-package-v1
+  #373 = Utf8               Idempotency-Key
+  #374 = Utf8               expectedVersion
+  #375 = NameAndType        #547:#551     // valueOf:(I)Ljava/lang/Integer;
+  #376 = NameAndType        #552:#553     // singletonMap:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+  #377 = Utf8               /internal/mobile/v1/task-lists/
+  #378 = NameAndType        #522:#554     // append:(J)Ljava/lang/StringBuilder;
+  #379 = Utf8               /evidence-packages/submit
+  #380 = Class              #555          // java/net/URI
+  #381 = NameAndType        #556:#557     // create:(Ljava/lang/String;)Ljava/net/URI;
+  #382 = Class              #558          // org/springframework/http/HttpMethod
+  #383 = NameAndType        #559:#560     // POST:Lorg/springframework/http/HttpMethod;
+  #384 = Utf8               org/springframework/http/HttpEntity
+  #385 = NameAndType        #202:#561     // "<init>":(Ljava/lang/Object;Lorg/springframework/util/MultiValueMap;)V
+  #386 = Utf8               java/lang/String
+  #387 = Class              #562          // org/springframework/web/client/RestTemplate
+  #388 = NameAndType        #241:#563     // exchange:(Ljava/net/URI;Lorg/springframework/http/HttpMethod;Lorg/springframework/http/HttpEntity;Ljava/lang/Class;)Lorg/springframework/http/ResponseEntity;
+  #389 = Class              #498          // org/springframework/http/ResponseEntity
+  #390 = NameAndType        #564:#565     // getStatusCode:()Lorg/springframework/http/HttpStatus;
+  #391 = Class              #501          // org/springframework/http/HttpStatus
+  #392 = NameAndType        #566:#567     // OK:Lorg/springframework/http/HttpStatus;
+  #393 = NameAndType        #568:#569     // getHeaders:()Lorg/springframework/http/HttpHeaders;
+  #394 = NameAndType        #570:#571     // getFirst:(Ljava/lang/String;)Ljava/lang/String;
+  #395 = NameAndType        #572:#525     // getCacheControl:()Ljava/lang/String;
+  #396 = NameAndType        #547:#573     // valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+  #397 = Utf8               no-store
+  #398 = NameAndType        #574:#575     // contains:(Ljava/lang/CharSequence;)Z
+  #399 = NameAndType        #576:#577     // getContentType:()Lorg/springframework/http/MediaType;
+  #400 = NameAndType        #578:#579     // isCompatibleWith:(Lorg/springframework/http/MediaType;)Z
+  #401 = Utf8               java/lang/IllegalArgumentException
+  #402 = NameAndType        #580:#581     // getBody:()Ljava/lang/Object;
+  #403 = Utf8               java/util/Map
+  #404 = NameAndType        #582:#583     // readValue:(Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;
+  #405 = NameAndType        #256:#257     // adaptCoreSubmitReceipt:(Ljava/util/Map;JJLjava/lang/String;Ljava/util/Map;)Ljava/util/Map;
+  #406 = NameAndType        #584:#585     // ok:()Lorg/springframework/http/ResponseEntity$BodyBuilder;
+  #407 = NameAndType        #586:#587     // contentType:(Lorg/springframework/http/MediaType;)Lorg/springframework/http/ResponseEntity$BodyBuilder;
+  #408 = Class              #588          // org/springframework/http/CacheControl
+  #409 = NameAndType        #589:#590     // noStore:()Lorg/springframework/http/CacheControl;
+  #410 = NameAndType        #591:#594     // cacheControl:(Lorg/springframework/http/CacheControl;)Lorg/springframework/http/ResponseEntity$HeadersBuilder;
+  #411 = Utf8               org/springframework/http/ResponseEntity$BodyBuilder
+  #412 = Utf8               BodyBuilder
+  #413 = NameAndType        #595:#596     // header:(Ljava/lang/String;[Ljava/lang/String;)Lorg/springframework/http/ResponseEntity$HeadersBuilder;
+  #414 = NameAndType        #597:#598     // body:(Ljava/lang/Object;)Lorg/springframework/http/ResponseEntity;
+  #415 = Utf8               com/lei/mobile/MobileContractException
+  #416 = Utf8               org/springframework/web/client/HttpStatusCodeException
+  #417 = NameAndType        #599:#600     // getRawStatusCode:()I
+  #418 = Utf8               java/lang/Integer
+  #419 = Class              #601          // java/util/Arrays
+  #420 = NameAndType        #602:#603     // asList:([Ljava/lang/Object;)Ljava/util/List;
+  #421 = Class              #604          // java/util/List
+  #422 = NameAndType        #574:#282     // contains:(Ljava/lang/Object;)Z
+  #423 = Utf8               POINT_EVIDENCE_CONTEXT_CONFLICT
+  #424 = Utf8               POINT_EVIDENCE_RESULT_UNKNOWN
+  #425 = Utf8               java/lang/Exception
+  #426 = Utf8               /points/
+  #427 = Utf8               /evidence-package/
+  #428 = NameAndType        #605:#560     // GET:Lorg/springframework/http/HttpMethod;
+  #429 = NameAndType        #261:#262     // adaptResult:(Ljava/util/Map;JJLjava/lang/String;)Ljava/util/Map;
+  #430 = NameAndType        #606:#607     // keySet:()Ljava/util/Set;
+  #431 = NameAndType        #189:#186     // CONTEXT:Ljava/util/Set;
+  #432 = Class              #608          // java/util/Set
+  #433 = NameAndType        #288:#289     // require:(Z)V
+  #434 = NameAndType        #272:#273     // identity:(Ljava/util/Map;JJ)V
+  #435 = NameAndType        #185:#186     // INPUT:Ljava/util/Set;
+  #436 = NameAndType        #609:#610     // iterator:()Ljava/util/Iterator;
+  #437 = Class              #499          // java/util/Iterator
+  #438 = NameAndType        #611:#612     // hasNext:()Z
+  #439 = NameAndType        #613:#581     // next:()Ljava/lang/Object;
+  #440 = Utf8               snapshotDigest
+  #441 = NameAndType        #614:#503     // get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #442 = NameAndType        #279:#280     // number:(Ljava/lang/Object;)J
+  #443 = NameAndType        #281:#282     // hash:(Ljava/lang/Object;)Z
+  #444 = Utf8               NOT_SUBMITTED
+  #445 = Utf8               SUBMITTED
+  #446 = Utf8               state
+  #447 = NameAndType        #267:#268     // submissionNotFound:(Lorg/springframework/web/client/HttpStatusCodeException;)Z
+  #448 = NameAndType        #264:#265     // notFound:(Ljava/lang/String;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
+  #449 = Utf8               POINT_EVIDENCE_UNAVAILABLE
+  #450 = NameAndType        #192:#186     // CORE_RECEIPT:Ljava/util/Set;
+  #451 = Utf8               outcome
+  #452 = Utf8               status
+  #453 = Utf8               taskListId
+  #454 = Utf8               samplingPointId
+  #455 = Utf8               version
+  #456 = Utf8               receiptCount
+  #457 = Utf8               packageDigest
+  #458 = Utf8               submittedAt
+  #459 = Class              #500          // java/time/Instant
+  #460 = NameAndType        #615:#616     // parse:(Ljava/lang/CharSequence;)Ljava/time/Instant;
+  #461 = NameAndType        #617:#600     // getNano:()I
+  #462 = Utf8               java/util/LinkedHashMap
+  #463 = Utf8               POINT_SUBMITTED
+  #464 = NameAndType        #618:#619     // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #465 = NameAndType        #547:#620     // valueOf:(J)Ljava/lang/Long;
+  #466 = Utf8               planId
+  #467 = Utf8               planVersion
+  #468 = Utf8               requestId
+  #469 = NameAndType        #269:#270     // receipt:(Ljava/util/Map;JJLjava/lang/String;)V
+  #470 = NameAndType        #191:#186     // LEGACY_RESULT:Ljava/util/Set;
+  #471 = Utf8               APPLIED
+  #472 = Utf8               NOT_FOUND
+  #473 = NameAndType        #621:#525     // getResponseBodyAsString:()Ljava/lang/String;
+  #474 = Utf8               POINT_EVIDENCE_SUBMISSION_NOT_FOUND
+  #475 = Utf8               code
+  #476 = NameAndType        #190:#186     // RECEIPT:Ljava/util/Set;
+  #477 = Utf8               java/lang/RuntimeException
+  #478 = Utf8               java/lang/Long
+  #479 = Utf8               java/lang/Number
+  #480 = NameAndType        #622:#546     // longValue:()J
+  #481 = Utf8               [0-9a-f]{64}
+  #482 = NameAndType        #623:#284     // matches:(Ljava/lang/String;)Z
+  #483 = Utf8               [0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}
+  #484 = Utf8               java/util/HashSet
+  #485 = NameAndType        #202:#624     // "<init>":(Ljava/util/Collection;)V
+  #486 = NameAndType        #547:#625     // valueOf:(I)Lorg/springframework/http/HttpStatus;
+  #487 = Utf8               读取原请求结果；不自动重发
+  #488 = Utf8               00000000-0000-4000-8000-000000000000
+  #489 = NameAndType        #202:#626     // "<init>":(Lorg/springframework/http/HttpStatus;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;)V
+  #490 = NameAndType        #627:#505     // authenticate:(Ljava/lang/String;)Lcom/lei/mobile/auth/MobileSession;
+  #491 = Utf8               orderId
+  #492 = Utf8               taskPoolId
+  #493 = Utf8               assignmentVersion
+  #494 = Utf8               snapshotVersion
+  #495 = NameAndType        #285:#286     // keys:([Ljava/lang/String;)Ljava/util/Set;
+  #496 = Utf8               java/lang/Object
+  #497 = Utf8               TIP_BFF_EVIDENCE_SUBMIT_PLURAL_ON_0b0a8f2e_20261017
+  #498 = Utf8               org/springframework/http/ResponseEntity
+  #499 = Utf8               java/util/Iterator
+  #500 = Utf8               java/time/Instant
+  #501 = Utf8               org/springframework/http/HttpStatus
+  #502 = Methodref          #628.#629     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #503 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #504 = Methodref          #31.#630      // com/lei/mobile/evidence/PointEvidenceController.lambda$new$0:(Lcom/lei/mobile/auth/MobileTokenService;Ljava/lang/String;)Lcom/lei/mobile/auth/MobileSession;
+  #505 = Utf8               (Ljava/lang/String;)Lcom/lei/mobile/auth/MobileSession;
+  #506 = Utf8               apply
+  #507 = Utf8               (Lcom/lei/mobile/auth/MobileTokenService;)Ljava/util/function/Function;
+  #508 = Utf8               replaceAll
+  #509 = Utf8               (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #510 = Utf8               com/fasterxml/jackson/databind/ObjectMapper
+  #511 = Utf8               copy
+  #512 = Utf8               ()Lcom/fasterxml/jackson/databind/ObjectMapper;
+  #513 = Utf8               com/fasterxml/jackson/core/JsonParser
+  #514 = Utf8               STRICT_DUPLICATE_DETECTION
+  #515 = Utf8               Lcom/fasterxml/jackson/core/JsonParser$Feature;
+  #516 = Utf8               enable
+  #517 = Utf8               ([Lcom/fasterxml/jackson/core/JsonParser$Feature;)Lcom/fasterxml/jackson/databind/ObjectMapper;
+  #518 = Utf8               com/fasterxml/jackson/databind/DeserializationFeature
+  #519 = Utf8               FAIL_ON_TRAILING_TOKENS
+  #520 = Utf8               Lcom/fasterxml/jackson/databind/DeserializationFeature;
+  #521 = Utf8               (Lcom/fasterxml/jackson/databind/DeserializationFeature;)Lcom/fasterxml/jackson/databind/ObjectMapper;
+  #522 = Utf8               append
+  #523 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #524 = Utf8               toString
+  #525 = Utf8               ()Ljava/lang/String;
+  #526 = Utf8               equals
+  #527 = Utf8               java/util/function/Function
+  #528 = Utf8               com/lei/mobile/auth/MobileTokenService
+  #529 = Utf8               getProfile
+  #530 = Utf8               ()Lcom/lei/mobile/auth/MobileProfile;
+  #531 = Utf8               com/lei/mobile/auth/MobileProfile
+  #532 = Utf8               hasPermission
+  #533 = Utf8               org/springframework/http/MediaType
+  #534 = Utf8               APPLICATION_JSON
+  #535 = Utf8               Lorg/springframework/http/MediaType;
+  #536 = Utf8               setContentType
+  #537 = Utf8               (Lorg/springframework/http/MediaType;)V
+  #538 = Utf8               java/util/Collections
+  #539 = Utf8               singletonList
+  #540 = Utf8               (Ljava/lang/Object;)Ljava/util/List;
+  #541 = Utf8               setAccept
+  #542 = Utf8               (Ljava/util/List;)V
+  #543 = Utf8               set
+  #544 = Utf8               (Ljava/lang/String;Ljava/lang/String;)V
+  #545 = Utf8               getUserId
+  #546 = Utf8               ()J
+  #547 = Utf8               valueOf
+  #548 = Utf8               (J)Ljava/lang/String;
+  #549 = Utf8               getTenantId
+  #550 = Utf8               getSessionId
+  #551 = Utf8               (I)Ljava/lang/Integer;
+  #552 = Utf8               singletonMap
+  #553 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+  #554 = Utf8               (J)Ljava/lang/StringBuilder;
+  #555 = Utf8               java/net/URI
+  #556 = Utf8               create
+  #557 = Utf8               (Ljava/lang/String;)Ljava/net/URI;
+  #558 = Utf8               org/springframework/http/HttpMethod
+  #559 = Utf8               POST
+  #560 = Utf8               Lorg/springframework/http/HttpMethod;
+  #561 = Utf8               (Ljava/lang/Object;Lorg/springframework/util/MultiValueMap;)V
+  #562 = Utf8               org/springframework/web/client/RestTemplate
+  #563 = Utf8               (Ljava/net/URI;Lorg/springframework/http/HttpMethod;Lorg/springframework/http/HttpEntity;Ljava/lang/Class;)Lorg/springframework/http/ResponseEntity;
+  #564 = Utf8               getStatusCode
+  #565 = Utf8               ()Lorg/springframework/http/HttpStatus;
+  #566 = Utf8               OK
+  #567 = Utf8               Lorg/springframework/http/HttpStatus;
+  #568 = Utf8               getHeaders
+  #569 = Utf8               ()Lorg/springframework/http/HttpHeaders;
+  #570 = Utf8               getFirst
+  #571 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+  #572 = Utf8               getCacheControl
+  #573 = Utf8               (Ljava/lang/Object;)Ljava/lang/String;
+  #574 = Utf8               contains
+  #575 = Utf8               (Ljava/lang/CharSequence;)Z
+  #576 = Utf8               getContentType
+  #577 = Utf8               ()Lorg/springframework/http/MediaType;
+  #578 = Utf8               isCompatibleWith
+  #579 = Utf8               (Lorg/springframework/http/MediaType;)Z
+  #580 = Utf8               getBody
+  #581 = Utf8               ()Ljava/lang/Object;
+  #582 = Utf8               readValue
+  #583 = Utf8               (Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;
+  #584 = Utf8               ok
+  #585 = Utf8               ()Lorg/springframework/http/ResponseEntity$BodyBuilder;
+  #586 = Utf8               contentType
+  #587 = Utf8               (Lorg/springframework/http/MediaType;)Lorg/springframework/http/ResponseEntity$BodyBuilder;
+  #588 = Utf8               org/springframework/http/CacheControl
+  #589 = Utf8               noStore
+  #590 = Utf8               ()Lorg/springframework/http/CacheControl;
+  #591 = Utf8               cacheControl
+  #592 = Class              #631          // org/springframework/http/ResponseEntity$HeadersBuilder
+  #593 = Utf8               HeadersBuilder
+  #594 = Utf8               (Lorg/springframework/http/CacheControl;)Lorg/springframework/http/ResponseEntity$HeadersBuilder;
+  #595 = Utf8               header
+  #596 = Utf8               (Ljava/lang/String;[Ljava/lang/String;)Lorg/springframework/http/ResponseEntity$HeadersBuilder;
+  #597 = Utf8               body
+  #598 = Utf8               (Ljava/lang/Object;)Lorg/springframework/http/ResponseEntity;
+  #599 = Utf8               getRawStatusCode
+  #600 = Utf8               ()I
+  #601 = Utf8               java/util/Arrays
+  #602 = Utf8               asList
+  #603 = Utf8               ([Ljava/lang/Object;)Ljava/util/List;
+  #604 = Utf8               java/util/List
+  #605 = Utf8               GET
+  #606 = Utf8               keySet
+  #607 = Utf8               ()Ljava/util/Set;
+  #608 = Utf8               java/util/Set
+  #609 = Utf8               iterator
+  #610 = Utf8               ()Ljava/util/Iterator;
+  #611 = Utf8               hasNext
+  #612 = Utf8               ()Z
+  #613 = Utf8               next
+  #614 = Utf8               get
+  #615 = Utf8               parse
+  #616 = Utf8               (Ljava/lang/CharSequence;)Ljava/time/Instant;
+  #617 = Utf8               getNano
+  #618 = Utf8               put
+  #619 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #620 = Utf8               (J)Ljava/lang/Long;
+  #621 = Utf8               getResponseBodyAsString
+  #622 = Utf8               longValue
+  #623 = Utf8               matches
+  #624 = Utf8               (Ljava/util/Collection;)V
+  #625 = Utf8               (I)Lorg/springframework/http/HttpStatus;
+  #626 = Utf8               (Lorg/springframework/http/HttpStatus;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;)V
+  #627 = Utf8               authenticate
+  #628 = Class              #632          // java/lang/invoke/LambdaMetafactory
+  #629 = NameAndType        #633:#636     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #630 = NameAndType        #293:#294     // lambda$new$0:(Lcom/lei/mobile/auth/MobileTokenService;Ljava/lang/String;)Lcom/lei/mobile/auth/MobileSession;
+  #631 = Utf8               org/springframework/http/ResponseEntity$HeadersBuilder
+  #632 = Utf8               java/lang/invoke/LambdaMetafactory
+  #633 = Utf8               metafactory
+  #634 = Class              #638          // java/lang/invoke/MethodHandles$Lookup
+  #635 = Utf8               Lookup
+  #636 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #637 = Class              #639          // java/lang/invoke/MethodHandles
+  #638 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #639 = Utf8               java/lang/invoke/MethodHandles
+{
+  static final java.lang.String VERSION;
+    descriptor: Ljava/lang/String;
+    flags: ACC_STATIC, ACC_FINAL
+    ConstantValue: String evidence-package-point-v2
+
+  static final java.lang.String CORE_PACKAGE_CONTRACT;
+    descriptor: Ljava/lang/String;
+    flags: ACC_STATIC, ACC_FINAL
+    ConstantValue: String evidence-package-v1
+
+  static final java.lang.String TIP_MARKER;
+    descriptor: Ljava/lang/String;
+    flags: ACC_STATIC, ACC_FINAL
+    ConstantValue: String TIP_BFF_EVIDENCE_SUBMIT_PLURAL_ON_0b0a8f2e_20261017
+
+  public com.lei.mobile.evidence.PointEvidenceController(com.lei.mobile.auth.MobileTokenService, org.springframework.web.client.RestTemplate, java.lang.String, java.lang.String, com.fasterxml.jackson.databind.ObjectMapper);
+    descriptor: (Lcom/lei/mobile/auth/MobileTokenService;Lorg/springframework/web/client/RestTemplate;Ljava/lang/String;Ljava/lang/String;Lcom/fasterxml/jackson/databind/ObjectMapper;)V
+    flags: ACC_PUBLIC
+    Code:
+      stack=6, locals=6, args_size=6
+         0: aload_0
+         1: aload_1
+         2: invokedynamic #1,  0              // InvokeDynamic #0:apply:(Lcom/lei/mobile/auth/MobileTokenService;)Ljava/util/function/Function;
+         7: aload_2
+         8: aload_3
+         9: aload         4
+        11: aload         5
+        13: invokespecial #2                  // Method "<init>":(Ljava/util/function/Function;Lorg/springframework/web/client/RestTemplate;Ljava/lang/String;Ljava/lang/String;Lcom/fasterxml/jackson/databind/ObjectMapper;)V
+        16: return
+      LineNumberTable:
+        line 64: 0
+        line 65: 16
+    RuntimeVisibleAnnotations:
+      0: #207()
+    RuntimeVisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+        0: #209(#210=s#211)
+      parameter 2:
+        0: #212(#210=s#213)
+      parameter 3:
+        0: #212(#210=s#214)
+      parameter 4:
+
+  com.lei.mobile.evidence.PointEvidenceController(java.util.function.Function<java.lang.String, com.lei.mobile.auth.MobileSession>, org.springframework.web.client.RestTemplate, java.lang.String, java.lang.String, com.fasterxml.jackson.databind.ObjectMapper);
+    descriptor: (Ljava/util/function/Function;Lorg/springframework/web/client/RestTemplate;Ljava/lang/String;Ljava/lang/String;Lcom/fasterxml/jackson/databind/ObjectMapper;)V
+    flags:
+    Code:
+      stack=6, locals=6, args_size=6
+         0: aload_0
+         1: invokespecial #3                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: aload_1
+         6: putfield      #4                  // Field sessions:Ljava/util/function/Function;
+         9: aload_0
+        10: aload_2
+        11: putfield      #5                  // Field rest:Lorg/springframework/web/client/RestTemplate;
+        14: aload_0
+        15: aload_3
+        16: ldc           #6                  // String /+$
+        18: ldc           #7                  // String
+        20: invokevirtual #8                  // Method java/lang/String.replaceAll:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+        23: putfield      #9                  // Field base:Ljava/lang/String;
+        26: aload_0
+        27: aload         4
+        29: putfield      #10                 // Field key:Ljava/lang/String;
+        32: aload_0
+        33: aload         5
+        35: invokevirtual #11                 // Method com/fasterxml/jackson/databind/ObjectMapper.copy:()Lcom/fasterxml/jackson/databind/ObjectMapper;
+        38: iconst_1
+        39: anewarray     #12                 // class com/fasterxml/jackson/core/JsonParser$Feature
+        42: dup
+        43: iconst_0
+        44: getstatic     #13                 // Field com/fasterxml/jackson/core/JsonParser$Feature.STRICT_DUPLICATE_DETECTION:Lcom/fasterxml/jackson/core/JsonParser$Feature;
+        47: aastore
+        48: invokevirtual #14                 // Method com/fasterxml/jackson/databind/ObjectMapper.enable:([Lcom/fasterxml/jackson/core/JsonParser$Feature;)Lcom/fasterxml/jackson/databind/ObjectMapper;
+        51: getstatic     #15                 // Field com/fasterxml/jackson/databind/DeserializationFeature.FAIL_ON_TRAILING_TOKENS:Lcom/fasterxml/jackson/databind/DeserializationFeature;
+        54: invokevirtual #16                 // Method com/fasterxml/jackson/databind/ObjectMapper.enable:(Lcom/fasterxml/jackson/databind/DeserializationFeature;)Lcom/fasterxml/jackson/databind/ObjectMapper;
+        57: putfield      #17                 // Field json:Lcom/fasterxml/jackson/databind/ObjectMapper;
+        60: return
+      LineNumberTable:
+        line 67: 0
+        line 68: 4
+        line 69: 9
+        line 70: 14
+        line 71: 26
+        line 72: 32
+        line 73: 60
+    Signature: #216                         // (Ljava/util/function/Function<Ljava/lang/String;Lcom/lei/mobile/auth/MobileSession;>;Lorg/springframework/web/client/RestTemplate;Ljava/lang/String;Ljava/lang/String;Lcom/fasterxml/jackson/databind/ObjectMapper;)V
+
+  public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> context(long, long, java.lang.String, java.lang.String, java.lang.String);
+    descriptor: (JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
+    flags: ACC_PUBLIC
+    Code:
+      stack=11, locals=8, args_size=6
+         0: aload_0
+         1: lload_1
+         2: lload_3
+         3: aload         5
+         5: aload         6
+         7: aload         7
+         9: ldc           #18                 // String context
+        11: aconst_null
+        12: aconst_null
+        13: invokespecial #19                 // Method exchange:(JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
+        16: areturn
+      LineNumberTable:
+        line 77: 0
+    Signature: #219                         // (JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity<Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;>;
+    RuntimeVisibleAnnotations:
+      0: #220(#210=[s#221])
+    RuntimeVisibleParameterAnnotations:
+      parameter 0:
+        0: #222(#210=s#223)
+      parameter 1:
+        0: #222(#210=s#224)
+      parameter 2:
+        0: #225(#210=s#226)
+      parameter 3:
+        0: #225(#210=s#227)
+      parameter 4:
+        0: #225(#210=s#228)
+
+  public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> submit(long, long, java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>);
+    descriptor: (JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lorg/springframework/http/ResponseEntity;
+    flags: ACC_PUBLIC
+    Code:
+      stack=11, locals=9, args_size=7
+         0: aload         8
+         2: aload         7
+         4: invokestatic  #20                 // Method validateInput:(Ljava/util/Map;Ljava/lang/String;)V
+         7: aload_0
+         8: lload_1
+         9: lload_3
+        10: aload         5
+        12: aload         6
+        14: aload         7
+        16: ldc           #21                 // String submit
+        18: aload         8
+        20: aconst_null
+        21: invokespecial #19                 // Method exchange:(JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
+        24: areturn
+      LineNumberTable:
+        line 82: 0
+        line 83: 7
+    Signature: #231                         // (JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)Lorg/springframework/http/ResponseEntity<Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;>;
+    RuntimeVisibleAnnotations:
+      0: #232(#210=[s#233])
+    RuntimeVisibleParameterAnnotations:
+      parameter 0:
+        0: #222(#210=s#223)
+      parameter 1:
+        0: #222(#210=s#224)
+      parameter 2:
+        0: #225(#210=s#226)
+      parameter 3:
+        0: #225(#210=s#227)
+      parameter 4:
+        0: #225(#210=s#228)
+      parameter 5:
+        0: #234()
+
+  public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> result(long, long, java.lang.String, java.lang.String, java.lang.String, java.lang.String);
+    descriptor: (JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
+    flags: ACC_PUBLIC
+    Code:
+      stack=11, locals=9, args_size=7
+         0: aload         5
+         2: invokestatic  #22                 // Method uuid:(Ljava/lang/String;)Z
+         5: ifne          19
+         8: sipush        400
+        11: ldc           #23                 // String POINT_EVIDENCE_REQUEST_INVALID
+        13: aload         8
+        15: invokestatic  #24                 // Method error:(ILjava/lang/String;Ljava/lang/String;)Lcom/lei/mobile/MobileContractException;
+        18: athrow
+        19: aload_0
+        20: lload_1
+        21: lload_3
+        22: aload         6
+        24: aload         7
+        26: aload         8
+        28: new           #25                 // class java/lang/StringBuilder
+        31: dup
+        32: invokespecial #26                 // Method java/lang/StringBuilder."<init>":()V
+        35: ldc           #27                 // String submissions/
+        37: invokevirtual #28                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        40: aload         5
+        42: invokevirtual #28                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        45: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+        48: aconst_null
+        49: aload         5
+        51: invokespecial #19                 // Method exchange:(JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
+        54: areturn
+      LineNumberTable:
+        line 88: 0
+        line 89: 8
+        line 91: 19
+      StackMapTable: number_of_entries = 1
+        frame_type = 19 /* same */
+    Signature: #238                         // (JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity<Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;>;
+    RuntimeVisibleAnnotations:
+      0: #220(#210=[s#239])
+    RuntimeVisibleParameterAnnotations:
+      parameter 0:
+        0: #222(#210=s#223)
+      parameter 1:
+        0: #222(#210=s#224)
+      parameter 2:
+        0: #222(#210=s#240)
+      parameter 3:
+        0: #225(#210=s#226)
+      parameter 4:
+        0: #225(#210=s#227)
+      parameter 5:
+        0: #225(#210=s#228)
+
+  static {};
+    descriptor: ()V
+    flags: ACC_STATIC
+    Code:
+      stack=4, locals=0, args_size=0
+         0: bipush        8
+         2: anewarray     #71                 // class java/lang/String
+         5: dup
+         6: iconst_0
+         7: ldc           #173                // String orderId
+         9: aastore
+        10: dup
+        11: iconst_1
+        12: ldc           #174                // String taskPoolId
+        14: aastore
+        15: dup
+        16: iconst_2
+        17: ldc           #146                // String planId
+        19: aastore
+        20: dup
+        21: iconst_3
+        22: ldc           #147                // String planVersion
+        24: aastore
+        25: dup
+        26: iconst_4
+        27: ldc           #175                // String assignmentVersion
+        29: aastore
+        30: dup
+        31: iconst_5
+        32: ldc           #176                // String snapshotVersion
+        34: aastore
+        35: dup
+        36: bipush        6
+        38: ldc           #119                // String snapshotDigest
+        40: aastore
+        41: dup
+        42: bipush        7
+        44: ldc           #61                 // String expectedVersion
+        46: aastore
+        47: invokestatic  #177                // Method keys:([Ljava/lang/String;)Ljava/util/Set;
+        50: putstatic     #115                // Field INPUT:Ljava/util/Set;
+        53: bipush        11
+        55: anewarray     #71                 // class java/lang/String
+        58: dup
+        59: iconst_0
+        60: ldc           #132                // String taskListId
+        62: aastore
+        63: dup
+        64: iconst_1
+        65: ldc           #133                // String samplingPointId
+        67: aastore
+        68: dup
+        69: iconst_2
+        70: ldc           #173                // String orderId
+        72: aastore
+        73: dup
+        74: iconst_3
+        75: ldc           #174                // String taskPoolId
+        77: aastore
+        78: dup
+        79: iconst_4
+        80: ldc           #146                // String planId
+        82: aastore
+        83: dup
+        84: iconst_5
+        85: ldc           #147                // String planVersion
+        87: aastore
+        88: dup
+        89: bipush        6
+        91: ldc           #175                // String assignmentVersion
+        93: aastore
+        94: dup
+        95: bipush        7
+        97: ldc           #176                // String snapshotVersion
+        99: aastore
+       100: dup
+       101: bipush        8
+       103: ldc           #119                // String snapshotDigest
+       105: aastore
+       106: dup
+       107: bipush        9
+       109: ldc           #61                 // String expectedVersion
+       111: aastore
+       112: dup
+       113: bipush        10
+       115: ldc           #125                // String state
+       117: aastore
+       118: invokestatic  #177                // Method keys:([Ljava/lang/String;)Ljava/util/Set;
+       121: putstatic     #111                // Field CONTEXT:Ljava/util/Set;
+       124: bipush        10
+       126: anewarray     #71                 // class java/lang/String
+       129: dup
+       130: iconst_0
+       131: ldc           #130                // String outcome
+       133: aastore
+       134: dup
+       135: iconst_1
+       136: ldc           #132                // String taskListId
+       138: aastore
+       139: dup
+       140: iconst_2
+       141: ldc           #133                // String samplingPointId
+       143: aastore
+       144: dup
+       145: iconst_3
+       146: ldc           #146                // String planId
+       148: aastore
+       149: dup
+       150: iconst_4
+       151: ldc           #147                // String planVersion
+       153: aastore
+       154: dup
+       155: iconst_5
+       156: ldc           #134                // String version
+       158: aastore
+       159: dup
+       160: bipush        6
+       162: ldc           #135                // String receiptCount
+       164: aastore
+       165: dup
+       166: bipush        7
+       168: ldc           #137                // String submittedAt
+       170: aastore
+       171: dup
+       172: bipush        8
+       174: ldc           #136                // String packageDigest
+       176: aastore
+       177: dup
+       178: bipush        9
+       180: ldc           #148                // String requestId
+       182: aastore
+       183: invokestatic  #177                // Method keys:([Ljava/lang/String;)Ljava/util/Set;
+       186: putstatic     #158                // Field RECEIPT:Ljava/util/Set;
+       189: iconst_3
+       190: anewarray     #71                 // class java/lang/String
+       193: dup
+       194: iconst_0
+       195: ldc           #125                // String state
+       197: aastore
+       198: dup
+       199: iconst_1
+       200: ldc           #148                // String requestId
+       202: aastore
+       203: dup
+       204: iconst_2
+       205: ldc           #153                // String receipt
+       207: aastore
+       208: invokestatic  #177                // Method keys:([Ljava/lang/String;)Ljava/util/Set;
+       211: putstatic     #151                // Field LEGACY_RESULT:Ljava/util/Set;
+       214: bipush        8
+       216: anewarray     #71                 // class java/lang/String
+       219: dup
+       220: iconst_0
+       221: ldc           #130                // String outcome
+       223: aastore
+       224: dup
+       225: iconst_1
+       226: ldc           #132                // String taskListId
+       228: aastore
+       229: dup
+       230: iconst_2
+       231: ldc           #133                // String samplingPointId
+       233: aastore
+       234: dup
+       235: iconst_3
+       236: ldc           #131                // String status
+       238: aastore
+       239: dup
+       240: iconst_4
+       241: ldc           #134                // String version
+       243: aastore
+       244: dup
+       245: iconst_5
+       246: ldc           #135                // String receiptCount
+       248: aastore
+       249: dup
+       250: bipush        6
+       252: ldc           #137                // String submittedAt
+       254: aastore
+       255: dup
+       256: bipush        7
+       258: ldc           #136                // String packageDigest
+       260: aastore
+       261: invokestatic  #177                // Method keys:([Ljava/lang/String;)Ljava/util/Set;
+       264: putstatic     #129                // Field CORE_RECEIPT:Ljava/util/Set;
+       267: return
+      LineNumberTable:
+        line 51: 0
+        line 52: 53
+        line 53: 124
+        line 54: 189
+        line 55: 214
+}
+SourceFile: "PointEvidenceController.java"
+RuntimeVisibleAnnotations:
+  0: #299()
+  1: #300(#210=[s#301])
+InnerClasses:
+     public static final #321= #12 of #319; //Feature=class com/fasterxml/jackson/core/JsonParser$Feature of class com/fasterxml/jackson/core/JsonParser
+     public static #346= #35 of #344; //MobileAccessDeniedException=class com/lei/mobile/auth/MobileTokenService$MobileAccessDeniedException of class com/lei/mobile/auth/MobileTokenService
+     public static #349= #37 of #344; //UnauthorizedException=class com/lei/mobile/auth/MobileTokenService$UnauthorizedException of class com/lei/mobile/auth/MobileTokenService
+     public static #412= #93 of #389; //BodyBuilder=class org/springframework/http/ResponseEntity$BodyBuilder of class org/springframework/http/ResponseEntity
+     public static #593= #592 of #389; //HeadersBuilder=class org/springframework/http/ResponseEntity$HeadersBuilder of class org/springframework/http/ResponseEntity
+     public static final #635= #634 of #637; //Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
+BootstrapMethods:
+  0: #303 invokestatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #304 (Ljava/lang/Object;)Ljava/lang/Object;
+      #305 invokestatic com/lei/mobile/evidence/PointEvidenceController.lambda$new$0:(Lcom/lei/mobile/auth/MobileTokenService;Ljava/lang/String;)Lcom/lei/mobile/auth/MobileSession;
+      #306 (Ljava/lang/String;)Lcom/lei/mobile/auth/MobileSession;

@@ -1,0 +1,94 @@
+--- base-pretty.js	2026-10-17 07:32:17.461732151 +0800
++++ patched-pretty.js	2026-10-17 07:32:35.953732151 +0800
+@@ -29,7 +29,7 @@
+ import { n as Vr } from "./requestId-Dle7j20r.js";
+ import { J as Or } from "./jszip.min-Bx6_DnlJ.js";
+ const J =
+-    "/lab/withdrawals" /*TIP_RHO_R2_TIP1_FE_PENDING_FILL_IDENTITY_20261017*/ /*TIP_RHO_R2_TIP1_FE_NO_DIRTY_RECORD_UR_PHASE_20261017*/ /*TIP_RHO_VIEW_FILES_FILENAME_FE_GRAY_20261016*/ /*TIP_RHO_T1_REQUESTID_QUERY_20261016*/ /*TIP_RHO_FE_CONFIRM_CARD_CONTINUE_20261016*/ /*TIP_T1_SESSION_RESTORE_LIB_REQUESTID_20261016*/ /*TIP_T1_FE_DROP_VIEW_PENDING_QUERY_LIB_KEY_20261016*/ /*TIP_LINGYANG_FE_F5PRIME_9d43c4b0_20261017*/ /*TIP_LINGYANG_FE_F5QUAD_57642542_20261017*/,
++    "/lab/withdrawals" /*TIP_RHO_R2_TIP1_FE_PENDING_FILL_IDENTITY_20261017*/ /*TIP_RHO_R2_TIP1_FE_NO_DIRTY_RECORD_UR_PHASE_20261017*/ /*TIP_RHO_VIEW_FILES_FILENAME_FE_GRAY_20261016*/ /*TIP_RHO_T1_REQUESTID_QUERY_20261016*/ /*TIP_RHO_FE_CONFIRM_CARD_CONTINUE_20261016*/ /*TIP_T1_SESSION_RESTORE_LIB_REQUESTID_20261016*/ /*TIP_T1_FE_DROP_VIEW_PENDING_QUERY_LIB_KEY_20261016*/ /*TIP_LINGYANG_FE_F5PRIME_9d43c4b0_20261017*/ /*TIP_LINGYANG_FE_F5QUAD_57642542_20261017*/ /*TIP_LINGYANG_FE_F5FIFTH_57945808_20261017*/,
+   H = (e) => encodeURIComponent(String(e)),
+   Le = (e) =>
+     ne({ url: J + "/tasks/" + H(e), method: "get", silentBusinessError: !0 }),
+@@ -1789,6 +1789,46 @@
+             return "待回读";
+           }
+         };
++      /* F5⁵ A+B: 相位钉死锁 + 空窗持续门（准修 57945808 / DIAG 91c65ccb） */
++      let _f5ResumeLockGen = -1;
++      function __f5EmptyWindowGate() {
++        /* B: record 真且 PENDING* 且 (phase≡SELECT 或 stepIndex≡0) → 必写 te+error */
++        if (
++          t.record &&
++          ["PENDING_CONFIRMATION", "PENDING_VERIFICATION"].includes(
++            t.record.state,
++          ) &&
++          (!t.phase || t.phase === "SELECT" || m.value === 0)
++        ) {
++          var _f5eg =
++            t.error ||
++            te.value ||
++            "继续领用后相位未落确认卡，请重试或联系管理员。";
++          ((t.error = _f5eg), (te.value = _f5eg));
++          return !0;
++        }
++        return !1;
++      }
++      function __f5PhaseLockOnSelect() {
++        /* A: resume 曾进 CARD/OPENING 且同 generation → 禁无旁注回 SELECT；强制 CARD */
++        if (
++          _f5ResumeLockGen === t.generation &&
++          t.record &&
++          ["PENDING_CONFIRMATION", "PENDING_VERIFICATION"].includes(
++            t.record.state,
++          ) &&
++          (!t.phase || t.phase === "SELECT")
++        ) {
++          t.phase = "CARD";
++          var _f5pl =
++            t.error ||
++            te.value ||
++            "继续领用相位被打断，已重新进入确认卡；请点「查看本次实际流转卡」。";
++          ((t.error = _f5pl), (te.value = _f5pl));
++          return !0;
++        }
++        return !1;
++      }
+       function x() {
+         c(
+           "admission",
+@@ -1998,6 +2038,12 @@
+             "继续领用后相位未落确认卡，请重试或联系管理员。";
+           ((t.error = _f5q), (te.value = _f5q));
+         }
++        /* F5⁵ A: resume 进入 CARD/OPENING/REVIEW 后钉死 generation 锁 */
++        if (["CARD", "OPENING", "REVIEW"].includes(t.phase)) {
++          _f5ResumeLockGen = t.generation;
++        }
++        /* F5⁵ B: 空窗持续门（ur 尾再检一次 PENDING*+步①） */
++        __f5EmptyWindowGate();
+         x();
+       }
+       async function sr(l) {
+@@ -2088,8 +2134,22 @@
+             "为待完成旧记录追加新事实，原记录与文件保留，新事实需本人重新查看、确认、签署和核验。"),
+           x());
+       }
++      /* F5⁵ A+B: 持续 watch — phase/record/state/step 变时相位钉死+空窗门 */
+       return (
+         xe(
++          () =>
++            [
++              t.phase,
++              (t.record && t.record.id) || "",
++              (t.record && t.record.state) || "",
++              m.value,
++            ].join("|"),
++          () => {
++            __f5PhaseLockOnSelect();
++            __f5EmptyWindowGate();
++          },
++        ),
++        xe(
+           () => [u.taskId, u.batchId, i.value].join(":"),
+           async () => {
+             let l;

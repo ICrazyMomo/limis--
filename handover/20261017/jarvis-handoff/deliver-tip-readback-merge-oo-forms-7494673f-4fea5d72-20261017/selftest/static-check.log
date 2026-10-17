@@ -1,0 +1,3 @@
+ORIG=b4ca935942c30c01 PATCH=4fea5d72c8fb45e6
+entryBatch import: import{r as de,b as me}from"./entryBatch-vbmxXr3M.js";
+SELFTEST_STATIC_OK

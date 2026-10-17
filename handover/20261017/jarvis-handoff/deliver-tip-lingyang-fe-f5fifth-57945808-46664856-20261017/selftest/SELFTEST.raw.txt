@@ -1,0 +1,21 @@
+PASS F5′ 甲73 继续→verification 反填卡指纹→phase=OPENING 看卡可见
+PASS F5′ 甲73 → OPENING→REVIEW→签名→VERIFY
+PASS F5″ snake view-sessions 回包兼容 → OPENING
+PASS F5″ 契约失败仍 CARD + 错文「受控流转卡查看配置未完整绑定本次记录；请点「查看本次实际…」
+PASS F5‴ PENDING 缺指纹 → 强制 CARD + 旁注（禁空停步1）
+PASS F5‴ ur 口径：PENDING+指纹+phase错 → 强制 CARD
+PASS F2 乙74 无 pending 不造查询钮；继续同甲进卡 phase=OPENING
+PASS F2/F5′ 乙74 → 看卡→确认→签名→VERIFY
+PASS 回归 自动开会话失败 → CARD 显错 → 手点看卡 → 签名
+PASS F5⁗ SELECT 空窗 → 必写 te+error（禁空停步1）
+PASS F5⁗/B SELECT 兜底保留「对不上」原文到 te
+PASS F5⁗/B 「只能恢复」原文到 te
+PASS F5⁗ CARD 族不误伤空窗兜底
+SELFTEST_F5QUAD_OK 13 cases
+PASS F5⁵ A1 resume CARD+lock → 打回 SELECT → 强制 CARD + te/error
+PASS F5⁵ B1 PENDING+SELECT 无 lock → gate 必写 te+error
+PASS F5⁵ B2 PENDING+CARD → gate 不强制改文
+PASS F5⁵ 合法 reset bump generation → 锁失效；B 仍可旁注
+PASS 回归 F5quara SELECT 空窗 → te+error
+PASS 回归 F5‴ 强制 CARD 路径不破
+SELFTEST_F5FIFTH_OK 6 cases

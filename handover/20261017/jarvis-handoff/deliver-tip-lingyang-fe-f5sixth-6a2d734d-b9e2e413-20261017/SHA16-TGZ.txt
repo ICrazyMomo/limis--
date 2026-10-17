@@ -1,0 +1,3 @@
+TGZ_sha16=e6c25575931cd38c
+TGZ_sha256=e6c25575931cd38c8187a167d63972f3ddfa1cb94cd43f9950b7377225b668ba
+path=/workspace/artifacts/tip-lingyang-fe-f5sixth-6a2d734d-b9e2e413-20261017.tgz
