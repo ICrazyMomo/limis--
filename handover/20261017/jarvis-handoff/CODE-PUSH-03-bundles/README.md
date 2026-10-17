@@ -1,29 +1,49 @@
 # CODE-PUSH-03 bundles
 
-两包真实 zip（各自可独立解压）：
+CODE-PUSH-03 的 git bundle 拆成 **两个独立 zip**（各自可单独解压校验）。**禁止**将 `.bundle` 或 zip 放进 git 对象；公开仓只保留本 README 与 `SHA256SUMS.txt`。
 
-| 文件 | size | sha16 | Release |
-|------|------|-------|---------|
-| `code-push-bundles-half1.zip` | ~24MB | `813b9593499829a8` | **待下一帖** |
-| `code-push-bundles-half2.zip` | ~12MB | `9f33a4bae13c6f6e` | 见下方 |
+## 下载（GitHub Release）
 
-解压后均含 `part-code-push-bundles/` 下若干 `.bundle`（**禁止**将 `.bundle` 进 git 对象）。
+**Release tag**：`handover-20261017-code-push-bundles`  
+**页面**：<https://github.com/ICrazyMomo/limis--/releases/tag/handover-20261017-code-push-bundles>
 
-## 落盘与 Release
+| 附件 | 约 size | sha16 | 直链 |
+| --- | --- | --- | --- |
+| `code-push-bundles-half1.zip` | 24MB | `813b9593499829a8` | [下载 half1](https://github.com/ICrazyMomo/limis--/releases/download/handover-20261017-code-push-bundles/code-push-bundles-half1.zip) |
+| `code-push-bundles-half2.zip` | 12MB | `9f33a4bae13c6f6e` | [下载 half2](https://github.com/ICrazyMomo/limis--/releases/download/handover-20261017-code-push-bundles/code-push-bundles-half2.zip) |
 
-- git 树内仅本目录 **README + SHA256SUMS**（及上级 `MANIFEST-handover-push-20261017.md`）。
-- 二进制 zip 挂 GitHub Release tag **`handover-20261017-code-push-bundles`**。
-- **2026-10-17**：half2 已上传；half1 未到齐前 Release 为**部分附件**，合并校验见 `SHA256SUMS.txt`。
+完整 sha256 见本目录 `SHA256SUMS.txt`（含 `part-docs-tips.zip` 等交接附件校验行）。
 
-下载入口（half2 可用后）：<https://github.com/ICrazyMomo/limis--/releases/tag/handover-20261017-code-push-bundles>
+## 解压与合并使用
 
-## half2 内含 bundle（解压后）
+两包解压后目录名均为 `part-code-push-bundles/`。请放到**同一父目录**下合并（先解压 half1，再解压 half2 到同一父目录，后解压的文件与 half1 并列，勿覆盖同名非 bundle 文件时可先分别解压到子目录再 `mv` bundle 到一处）。
+
+```bash
+mkdir -p ~/code-push-03 && cd ~/code-push-03
+# 从 Release 下载两个 zip 后：
+unzip -q code-push-bundles-half1.zip
+unzip -q -o code-push-bundles-half2.zip   # bundle 文件名互不重复，可同目录
+sha256sum -c SHA256SUMS   # 使用 half1 包内 part-code-push-bundles/SHA256SUMS（若已合并目录）
+ls part-code-push-bundles/*.bundle
+```
+
+`git bundle verify part-code-push-bundles/<name>.bundle` 按需逐包校验。
+
+## half1 内含（`part-code-push-bundles/`）
 
 | 文件 | 说明 |
-|------|------|
+| --- | --- |
+| `CODE-PUSH-03-RESULT.md` | 推送结果与停推说明 |
+| `codex-three-lines-dual-adf04e44.bundle` | 双审三线 |
+| `codex-three-lines-dual-plus-lingyang-full.bundle` | 双审+领样全量 |
+
+## half2 内含（`part-code-push-bundles/`）
+
+| 文件 | 说明 |
+| --- | --- |
 | `codex-three-lines-entry-0a6ac4d9-tipgit.bundle` | 入口线 tip-git |
 | `codex-three-lines-jia-FE-4fea5d72-tipgit.bundle` | 甲 FE |
 | `codex-three-lines-lingyang-b9e2e413.bundle` | 领样三线 |
 | `codex-tipgit-dual-adf04e44-extra.bundle` | 附加 tip-git |
 
-完整 bundle 列表待 half1 到齐后在本 README 补全。
+合并后共 **6 个 `.bundle`** + `CODE-PUSH-03-RESULT.md` 等说明件。上下文见 `jarvis-handoff/交接-Jarvis-给新GrokBot-接手以来做了什么-20261017.md` §CODE-PUSH-03。

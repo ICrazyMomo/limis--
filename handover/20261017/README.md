@@ -19,8 +19,8 @@ Jarvis 交接总述见：`jarvis-handoff/交接-Jarvis-给新GrokBot-接手以�
 | 附件 | sha16 | 落盘 |
 | --- | --- | --- |
 | `part-docs-tips.zip` | `19a235d069070fbd` | 展开 → `jarvis-handoff/` |
+| `code-push-bundles-half1.zip` | `813b9593499829a8` | Release 附件（与 half2 同 tag） |
 | `code-push-bundles-half2.zip` | `9f33a4bae13c6f6e` | Release 附件（git 不进 `.bundle`） |
-| `code-push-bundles-half1.zip` | `813b9593499829a8` | **待下一帖** |
 
 推送清单：`jarvis-handoff/MANIFEST-handover-push-20261017.md` · bundle 校验：`jarvis-handoff/CODE-PUSH-03-bundles/SHA256SUMS.txt`
 
@@ -42,7 +42,7 @@ jarvis-handoff 内 FOCUS-04 为补交后 INDEX（sha16 以 `jarvis-handoff/1017-
 | --- | --- |
 | Vue `page.evaluate` 五元组 dump | evaluate 被拦；DOM 摘录 / DIAG 补交字段见 jarvis-handoff 证据树 |
 | 本枪 verification 响体全文 / HAR | 旁证窗在 `06-verification-view-sessions/`；本枪独立 HAR **无** |
-| CODE-PUSH half1 | bundle zip 未齐 |
+| （无） | CODE-PUSH half1+half2 已在 Release |
 
 ## 红线
 
