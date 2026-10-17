@@ -1,0 +1,8 @@
+branch=tip/entry-resolve-draft-found-filekey-on-16751394-20261017
+short_sha=7aa266fc
+full_sha=7aa266fcf1a171ce2ded60188b067236174353ce
+tag=tip/0a6ac4d9-on-16751394
+PRE_FINAL=16751394
+PATCH_Receipt_sha16=0a6ac4d9da060498
+repo=deliver-tip-entry-resolve-draft-found-filekey-on-16751394-20261017/tip-git
+remote=none

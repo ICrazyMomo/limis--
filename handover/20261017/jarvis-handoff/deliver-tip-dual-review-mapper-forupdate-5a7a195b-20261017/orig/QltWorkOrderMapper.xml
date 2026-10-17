@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lei.system.mapper.QltWorkOrderMapper">
+
+    <resultMap type="com.lei.system.domain.QltWorkOrder" id="QltWorkOrderResult">
+        <id property="id" column="id"/>
+        <result property="workOrderId" column="work_order_id"/>
+        <result property="orderType" column="order_type"/>
+        <result property="sourceKey" column="source_key"/>
+        <result property="eventId" column="event_id"/>
+        <result property="idempotencyKey" column="idempotency_key"/>
+        <result property="requestId" column="request_id"/>
+        <result property="checklistVersionId" column="checklist_version_id"/>
+        <result property="statusCode" column="status_code"/>
+        <result property="openProblemCount" column="open_problem_count"/>
+        <result property="hasOpenProblems" column="has_open_problems"/>
+        <result property="dueAt" column="due_at"/>
+        <result property="ownerUserId" column="owner_user_id"/>
+        <result property="ownerName" column="owner_name"/>
+        <result property="summary" column="summary"/>
+        <result property="tenantId" column="tenant_id"/>
+        <result property="deptId" column="dept_id"/>
+        <result property="version" column="version"/>
+        <result property="payloadHash" column="payload_hash"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="createUser" column="create_user"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateUser" column="update_user"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="selectQltWorkOrderVo">
+        select id, work_order_id, order_type, source_key, event_id, idempotency_key,
+               request_id, checklist_version_id, status_code, open_problem_count,
+               has_open_problems, due_at, owner_user_id, owner_name, summary,
+               tenant_id, dept_id, version, payload_hash, del_flag,
+               create_user, create_time, update_user, update_time
+        from qlt_work_order
+    </sql>
+
+    <select id="selectById" parameterType="Long" resultMap="QltWorkOrderResult">
+        <include refid="selectQltWorkOrderVo"/>
+        where id = #{id} and del_flag = '0'
+    </select>
+
+    <select id="selectByWorkOrderId" parameterType="String" resultMap="QltWorkOrderResult">
+        <include refid="selectQltWorkOrderVo"/>
+        where work_order_id = #{workOrderId} and del_flag = '0'
+    </select>
+
+    <select id="selectByIdempotencyKey" resultMap="QltWorkOrderResult">
+        <include refid="selectQltWorkOrderVo"/>
+        where tenant_id = #{tenantId}
+          and idempotency_key = #{idempotencyKey}
+          and del_flag = '0'
+        order by id asc
+        limit 1
+    </select>
+
+    <select id="selectWorkbench" resultMap="QltWorkOrderResult">
+        <include refid="selectQltWorkOrderVo"/>
+        <where>
+            del_flag = '0'
+            and tenant_id = #{tenantId}
+            <if test="partition != null and partition != ''">
+                and order_type = #{partition}
+            </if>
+            <if test="keyword != null and keyword != ''">
+                and (work_order_id like concat('%', #{keyword}, '%')
+                     or source_key like concat('%', #{keyword}, '%')
+                     or event_id like concat('%', #{keyword}, '%')
+                     or summary like concat('%', #{keyword}, '%'))
+            </if>
+        </where>
+        order by
+            case when due_at is null then '9999-12-31 23:59:59' else due_at end asc,
+            id asc
+    </select>
+
+    <insert id="insert" parameterType="com.lei.system.domain.QltWorkOrder" useGeneratedKeys="true" keyProperty="id">
+        insert into qlt_work_order
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="workOrderId != null and workOrderId != ''">work_order_id,</if>
+            <if test="orderType != null and orderType != ''">order_type,</if>
+            <if test="sourceKey != null and sourceKey != ''">source_key,</if>
+            <if test="eventId != null and eventId != ''">event_id,</if>
+            <if test="idempotencyKey != null and idempotencyKey != ''">idempotency_key,</if>
+            <if test="requestId != null and requestId != ''">request_id,</if>
+            <if test="checklistVersionId != null and checklistVersionId != ''">checklist_version_id,</if>
+            <if test="statusCode != null and statusCode != ''">status_code,</if>
+            <if test="openProblemCount != null">open_problem_count,</if>
+            <if test="hasOpenProblems != null and hasOpenProblems != ''">has_open_problems,</if>
+            <if test="dueAt != null">due_at,</if>
+            <if test="ownerUserId != null">owner_user_id,</if>
+            <if test="ownerName != null and ownerName != ''">owner_name,</if>
+            <if test="summary != null and summary != ''">summary,</if>
+            <if test="tenantId != null">tenant_id,</if>
+            <if test="deptId != null">dept_id,</if>
+            <if test="version != null">version,</if>
+            <if test="payloadHash != null and payloadHash != ''">payload_hash,</if>
+            <if test="delFlag != null and delFlag != ''">del_flag,</if>
+            <if test="createUser != null">create_user,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateUser != null">update_user,</if>
+            <if test="updateTime != null">update_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="workOrderId != null and workOrderId != ''">#{workOrderId},</if>
+            <if test="orderType != null and orderType != ''">#{orderType},</if>
+            <if test="sourceKey != null and sourceKey != ''">#{sourceKey},</if>
+            <if test="eventId != null and eventId != ''">#{eventId},</if>
+            <if test="idempotencyKey != null and idempotencyKey != ''">#{idempotencyKey},</if>
+            <if test="requestId != null and requestId != ''">#{requestId},</if>
+            <if test="checklistVersionId != null and checklistVersionId != ''">#{checklistVersionId},</if>
+            <if test="statusCode != null and statusCode != ''">#{statusCode},</if>
+            <if test="openProblemCount != null">#{openProblemCount},</if>
+            <if test="hasOpenProblems != null and hasOpenProblems != ''">#{hasOpenProblems},</if>
+            <if test="dueAt != null">#{dueAt},</if>
+            <if test="ownerUserId != null">#{ownerUserId},</if>
+            <if test="ownerName != null and ownerName != ''">#{ownerName},</if>
+            <if test="summary != null and summary != ''">#{summary},</if>
+            <if test="tenantId != null">#{tenantId},</if>
+            <if test="deptId != null">#{deptId},</if>
+            <if test="version != null">#{version},</if>
+            <if test="payloadHash != null and payloadHash != ''">#{payloadHash},</if>
+            <if test="delFlag != null and delFlag != ''">#{delFlag},</if>
+            <if test="createUser != null">#{createUser},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateUser != null">#{updateUser},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+        </trim>
+    </insert>
+
+    <update id="advanceStatus">
+        update qlt_work_order
+        set status_code = #{statusCode},
+            version = version + 1,
+            update_user = #{updateUser},
+            update_time = #{updateTime}
+        where id = #{id}
+          and del_flag = '0'
+          and version = #{expectedVersion}
+    </update>
+
+    <!-- ⑥C1 甲案：办结退回 CAS + 同步 open_problem_count（随票、不另票） -->
+    <update id="advanceStatusWithOpenCount">
+        update qlt_work_order
+        set status_code = #{statusCode},
+            open_problem_count = #{openProblemCount},
+            has_open_problems = #{hasOpenProblems},
+            version = version + 1,
+            update_user = #{updateUser},
+            update_time = #{updateTime}
+        where id = #{id}
+          and del_flag = '0'
+          and version = #{expectedVersion}
+    </update>
+</mapper>

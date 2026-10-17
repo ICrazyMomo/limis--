@@ -1,0 +1,11 @@
+repo=/workspace/scratch/limis-ready/limis-web
+worktree=/workspace/scratch/tip-wt-lingyang-fe-f5sixth-20261017
+branch=tip/lingyang-fe-f5sixth-on-7080b882-20261017
+commit=b9e2e41374aeda4957d5b37e70879ce4c81c5724 (short b9e2e413)
+tag=tip/b9e2e413-on-7080b882 (local, not pushed)
+pre_FINAL=7080b882 (现网 Core jar sha16 观察钉；FE-only 不改 jar)
+FE_ORIG=50ea6b9fd94fcec1 (挂前实测 = tip 46664856 NEW / 现网 LIVE Handover)
+FE_NEW=9b6957978955d509
+path_in_repo=deploy/fe-tips/lingyang-fe-f5sixth/
+stamp=6a2d734d
+DIAG=18fd5c5b

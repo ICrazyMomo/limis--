@@ -1,0 +1,2 @@
+major=52
+ASM patch ORIG 5b05565b → PATCH d0598290; COMPUTE_FRAMES; inners KEEP
